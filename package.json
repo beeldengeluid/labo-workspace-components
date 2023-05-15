@@ -9,7 +9,7 @@
     "lint": "eslint \"app/**\"",
     "prettier": "prettier --check app",
     "prod": "webpack --mode production",
-    "bundle:scss": "scss-bundle -e ./sass/labo-components.scss -o ./dist/labo-components.scss",
+    "bundle:scss": "scss-bundle -e ./sass/labo-workspace-components.scss -o ./dist/labo-workspace-components.scss",
     "prepublishOnly": "npm run bundle:scss && npm run prod",
     "test": "jest"
   },
