@@ -1,0 +1,24 @@
+//vendor imports first
+@import './vendor/index.scss';
+
+//then import the component variables that are exposed for clients importing the scss version of this library
+@import './_variables.scss';
+
+// import image urls
+@import './_images.scss';
+
+//import mixins, containing generic all purpose small elements
+@import './_mixins.scss';
+
+//imports from our very own component library (clients can override the exposed variables)
+@import 'flex/index.scss';
+@import 'shared/index.scss';
+
+.interactive {
+	cursor:pointer;
+}
+
+//import the workspace, which overrides the bootstrap styling
+.bg__no-bootstrap-custom-styling {
+    @import './workspace/index.scss';
+}

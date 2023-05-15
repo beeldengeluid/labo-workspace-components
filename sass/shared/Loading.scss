@@ -1,0 +1,87 @@
+.bg__loading {
+    font-size: 0;
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(white, 0.4);
+    z-index: 9999;
+    pointer-events: none;
+}
+
+.bg__spinner, .bg__spinner:after {
+    border-radius: 50%;
+    width: 80px;
+    height: 80px;
+}
+.bg__spinner {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    margin-top: -40px;
+    margin-left: -40px;
+    border: 5px solid rgba($clDark, 0.5);
+    border-left: 5px solid rgba($clDark, 0.1);
+    transform: translateZ(0);
+    animation: loadingSpin 0.7s infinite linear,
+        loadingColors 5.1s infinite linear;
+}
+
+@keyframes loadingSpin {
+    0% {
+        transform: rotate(0deg);
+    }
+    100% {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes loadingColors {
+    0% {
+        border-color: rgba($clDark, 0.5);
+        border-left-color: rgba($clDark, 0.1);
+    }
+    33% {
+        border-color: rgba($clPrimary, 0.5);
+        border-left-color: rgba($clPrimary, 0.1);
+    }
+    66% {
+        border-color: rgba($clSecondary, 0.5);
+        border-left-color: rgba($clSecondary, 0.1);
+    }
+}
+
+/* OTHER NICE SPINNER FROM FRONT-WISE (removed from _mixins)
+@keyframes spinner {
+    to {transform: rotate(360deg);}
+}
+
+.spinner {
+    position: fixed; // Sit on top of the page content
+    width: 100%; // Full width (cover the whole page)
+    height: 100%; // Full height (cover the whole page)
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: 22334; //Specify a stack order in case you're using a different order for other elements
+    cursor: pointer; // Add a pointer on hover
+    opacity: .6;
+
+    &::after {
+        content: '';
+        box-sizing: border-box;
+        position: fixed;
+        top: 50%;
+        left: 50%;
+        width: 45px;
+        height: 45px;
+        margin-top: -10px;
+        margin-left: -10px;
+        border-radius: 50%;
+        border: 8px solid #ccc;
+        border-top-color: #333;
+        animation: spinner .6s linear infinite;
+    }
+}*/

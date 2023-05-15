@@ -1,0 +1,10 @@
+.DS_Store
+node_modules
+dist
+.sass-cache
+.idea
+transcript.json
+stats.json
+__snapshots__
+.vscode
+NOTES.md

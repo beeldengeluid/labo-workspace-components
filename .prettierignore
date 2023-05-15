@@ -1,0 +1,12 @@
+.DS_Store
+node_modules
+dist
+.sass-cache
+.idea
+__snapshots__
+.vscode
+*.scss
+*.json
+*.md
+*.yml
+.babelrc

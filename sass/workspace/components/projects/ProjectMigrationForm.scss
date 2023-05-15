@@ -1,0 +1,70 @@
+.bg__project-migration-form {
+
+	padding:20px;
+
+	> .project-actions {
+		margin: 10px 0px;
+		> *:last-child {
+			margin: 0px 10px;
+		}
+		select {
+			width: 120px;
+		    margin: 0 10px;
+		    border-color: #eee3e1;
+		    border-radius: 2px;
+		    background-color: #fff;
+		    padding: 3px 5px;
+		}
+	}
+
+
+	> .multi-select {
+		border: 1px solid #fefefe;
+		margin-top: 10px;
+		width:50%;
+
+		> select {
+			width: 50%;
+			height: 154px;
+
+			option {
+				cursor: pointer;
+				align-items: center;
+				border-bottom: 1px solid $clGreyTint;
+				font-size: 12px;
+				padding: 10px;
+				&:hover {
+					background-color: rgba(153, 153, 153, 0.26);
+				}
+
+				&.left {
+					&:after {
+						color: #333;
+						content: " ▶ ";
+						float:right;
+					}
+				}
+
+				&.right {
+					padding-left: 10px;
+
+					&:before {
+						color: #333;
+						content: " ◀ ";
+						margin-right: 10px;
+						display: inline-block;
+					}
+				}
+			}
+
+		}
+	}
+
+	> .validation-error {
+		background-color: #f26c50;
+		color: #fff;
+		height: 3.3rem;
+		margin-bottom: 6px;
+		padding: 6px 10px;
+	}
+}

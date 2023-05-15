@@ -1,0 +1,13 @@
+.bg__flex-modal {
+
+	.bg__fm__custom {
+		width: 55%;
+	}
+
+	& > .modal-dialog > .modal-content {
+
+		& > .modal-header {
+			cursor: grab;
+		}
+	}
+}

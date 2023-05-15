@@ -1,0 +1,40 @@
+.bg__annotation-row.item-row{
+  .item{
+    .classification{
+      .vocabulary{
+        width: 150px;
+      }
+    }
+
+    .metadata{
+      .template{
+        width: 100px;
+      }
+    }
+
+    .created{
+      width: 100px;
+    }  
+
+    .actions{
+      .row-menu{
+        margin-top: 0px;          
+      }
+    }
+    
+    .icon.bookmark{
+      width: 20px;
+      background-size: 14px;
+      background-image: $iconBookmarkUrl;
+    }
+  }
+
+  .sublevel{
+    td.actions{
+      text-align: right;
+      .btn{
+        margin: 0;
+      }
+    }
+  }
+}
