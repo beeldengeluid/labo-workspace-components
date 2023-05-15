@@ -123,5 +123,4 @@ export default class ProjectAPI {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send();
   };
-
 }

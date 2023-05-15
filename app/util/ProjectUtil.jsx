@@ -1,5 +1,3 @@
-import { createRoot } from "react-dom/client";
-import React from "react";
 import ProjectAPI from "../api/ProjectAPI";
 
 export default class ProjectUtil {
@@ -30,5 +28,4 @@ export default class ProjectUtil {
       });
     }
   };
-
 }

@@ -226,5 +226,4 @@ export default class AnnotationAPI {
       xhr.send();
     }
   };
-
 }

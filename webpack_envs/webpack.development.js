@@ -9,7 +9,7 @@ module.exports = {
     path: BUILD_DIR,
     filename: "labo-workspace-components.js",
     libraryTarget: "umd",
-    library: "labo",
+    library: "labows",
   },
   devtool: "cheap-module-source-map",
   module: {
