@@ -1,6 +1,3 @@
-//vendor imports first
-@import './vendor/index.scss';
-
 //then import the component variables that are exposed for clients importing the scss version of this library
 @import './_variables.scss';
 
