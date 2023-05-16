@@ -3,7 +3,6 @@ import PropTypes from "prop-types";
 import AnnotationAPI from "../../../api/AnnotationAPI";
 import IDUtil from "../../../util/IDUtil";
 import TimeUtil from "../../../util/TimeUtil";
-import { CUSTOM } from "../../../util/AnnotationConstants";
 
 import { exportDataAsJSON } from "../../helpers/Export";
 import BulkActions from "../../helpers/BulkActions";
@@ -20,6 +19,8 @@ import NestedTable from "../../helpers/NestedTable";
 import CollectionUtil from "../../../util/CollectionUtil";
 import LocalStorageHandler from "../../../util/LocalStorageHandler";
 import Loading from "../../../shared/Loading";
+
+const CUSTOM = "custom";  // removed AnnotationConstants (still in labo-components)
 /**
  * This view handles the loading, filtering and selection of data of
  * the Bookmarks list of a project. It is displayed using the NestedTable component.

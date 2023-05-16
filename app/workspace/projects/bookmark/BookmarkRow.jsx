@@ -2,13 +2,14 @@ import React from "react";
 import IDUtil from "../../../util/IDUtil";
 import IconUtil from "../../../util/IconUtil";
 import AnnotationUtil from "../../../util/AnnotationUtil";
-import { CUSTOM } from "../../../util/AnnotationConstants";
 import { secToTime } from "../../helpers/time";
 import { AnnotationTranslator } from "../../helpers/AnnotationTranslator";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 
+
+const CUSTOM = "custom";  // removed AnnotationConstants (still in labo-components)
 /**
  * A row with bookmark information, and actions, and sub level annotations
  */
