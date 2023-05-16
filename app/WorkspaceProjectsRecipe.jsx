@@ -100,7 +100,7 @@ WorkspaceProjectsRecipe.propTypes = {
     description: PropTypes.string,
     id: PropTypes.string,
     inRecipeList: PropTypes.bool,
-    name: PropTypes.string.isRequired, // Use for when rendering header (isRequired by <ToolHeader/>)
+    name: PropTypes.string.isRequired,
     phase: PropTypes.string,
     recipeDescription: PropTypes.string,
     type: PropTypes.string,
