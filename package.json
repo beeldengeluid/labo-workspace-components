@@ -1,5 +1,5 @@
 {
-  "name": "labo-workspace-components",
+  "name": "@beeldengeluid/labo-workspace-components",
   "version": "1.0.0",
   "description": "Workspace components for the CLARIAH Media Suite",
   "main": "webpack.config.js",
