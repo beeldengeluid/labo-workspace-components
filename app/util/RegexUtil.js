@@ -1,5 +1,4 @@
 const RegexUtil = {
-
   /**
    * @desc Returns a Regular expression from the search term.
    *      Cases:
@@ -90,6 +89,5 @@ const RegexUtil = {
       return null;
     }
   },
-
 };
 export default RegexUtil;

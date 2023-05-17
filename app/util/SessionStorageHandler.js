@@ -21,5 +21,5 @@ export const get = (key, defaultValue = "") => {
 
 export default {
   set,
-  get
+  get,
 };
