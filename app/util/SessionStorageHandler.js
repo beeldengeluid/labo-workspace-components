@@ -19,19 +19,7 @@ export const get = (key, defaultValue = "") => {
   return defaultValue;
 };
 
-export const getSplit = (key, defaultValue = [], splitter = ",") => {
-  const value = get(key, "");
-  return value ? value.split(splitter) : defaultValue;
-};
-
-export const getInt = (key, defaultValue = 0) => {
-  const value = get(key, "");
-  return value ? parseInt(value) : defaultValue;
-};
-
 export default {
   set,
-  get,
-  getSplit,
-  getInt,
+  get
 };

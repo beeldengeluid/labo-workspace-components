@@ -75,18 +75,6 @@ export default class LocalStorageHandler {
 	* ------------------------- CRUD OF JSON OBJECTS IN LOCALSTORAGE -----------------
 	---------------------------------------------------------------------------------*/
 
-  static deleteUnusedKeys = () => {
-    for (let i = 0; i < localStorage.length; i++) {
-      if (LocalStorageHandler.VALID_KEYS[localStorage.key(i)] === undefined) {
-        try {
-          localStorage.removeItem(localStorage.key(i));
-        } catch (e) {
-          console.warn(e);
-        }
-      }
-    }
-  };
-
   static shouldCompress = (key) => {
     return LocalStorageHandler.VALID_KEYS[key].compress;
   };
