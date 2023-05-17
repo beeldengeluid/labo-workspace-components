@@ -1,0 +1,17 @@
+name: main branch - test; bump version; publish GH package
+
+on:
+  push:
+    branches:
+      - "main"
+    paths-ignore:
+      - README.md
+      - LICENSE
+
+jobs:
+  test:
+    uses: ./.github/workflows/_test.yml
+
+  # bump-version:
+  #   uses: ./.github/workflows/_bump-version.yml
+  #   needs: [test]

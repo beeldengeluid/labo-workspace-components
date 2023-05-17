@@ -8,7 +8,6 @@
 @import './_mixins.scss';
 
 //imports from our very own component library (clients can override the exposed variables)
-@import 'flex/index.scss';
 @import 'shared/index.scss';
 
 .interactive {
