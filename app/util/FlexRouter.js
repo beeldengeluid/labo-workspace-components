@@ -18,24 +18,6 @@ export default class FlexRouter {
 
   //this is typically called from a search recipe after clicking a search result
   //FIXME expects a FORMATTED searchResult
-  static gotoResourceViewer = (
-    recipePath,
-    searchResult,
-    searchTerm,
-    hidePageHeader = false,
-    singleResource = false
-  ) => {
-    document.location.href = FlexRouter.__getResourceViewerUrl(
-      recipePath,
-      searchResult,
-      searchTerm,
-      hidePageHeader,
-      singleResource
-    );
-  };
-
-  //this is typically called from a search recipe after clicking a search result
-  //FIXME expects a FORMATTED searchResult
   static popupResourceViewer = (
     recipePath,
     searchResult,
@@ -136,17 +118,6 @@ export default class FlexRouter {
     return url;
   };
 
-  //this is typically called from a collection browsing recipe after selecting a collection for closer study
-  static gotoSearch = (searchRecipePath, collectionIds) => {
-    const url =
-      FlexRouter.__getBaseUrl() +
-      "/" +
-      searchRecipePath +
-      "?cids=" +
-      collectionIds.join(",");
-    document.location.href = url;
-  };
-
   static __getBaseUrl = () => {
     const temp = window.location.href;
     const arr = temp.split("/");
@@ -166,15 +137,5 @@ export default class FlexRouter {
       }
     }
     return paramList;
-  };
-
-  //TODO extend this function so it is optional to put the params in the URL
-  static setBrowserHistory = (params, stateTitle) => {
-    let url = document.location.pathname;
-    const paramList = FlexRouter.__toUrlParamList(params);
-    if (paramList) {
-      url += "?" + paramList.join("&");
-    }
-    window.history.pushState(params, stateTitle, url);
   };
 }

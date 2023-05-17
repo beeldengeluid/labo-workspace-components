@@ -1,5 +1,4 @@
 const AnnotationUtil = {
-
   generateResourceLevelTarget(collectionId, resourceId) {
     return {
       type: "Resource",
@@ -41,7 +40,6 @@ const AnnotationUtil = {
     }
     return "-";
   },
-
 };
 
 export default AnnotationUtil;

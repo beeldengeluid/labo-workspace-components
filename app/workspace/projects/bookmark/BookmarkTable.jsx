@@ -20,7 +20,7 @@ import CollectionUtil from "../../../util/CollectionUtil";
 import LocalStorageHandler from "../../../util/LocalStorageHandler";
 import Loading from "../../../shared/Loading";
 
-const CUSTOM = "custom";  // removed AnnotationConstants (still in labo-components)
+const CUSTOM = "custom"; // removed AnnotationConstants (still in labo-components)
 /**
  * This view handles the loading, filtering and selection of data of
  * the Bookmarks list of a project. It is displayed using the NestedTable component.

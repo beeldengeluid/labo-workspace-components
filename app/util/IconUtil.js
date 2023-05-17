@@ -1,5 +1,4 @@
 const IconUtil = {
-
   getMimeTypeIcon(mimeType, border, muted, interactive) {
     let iconClass = "";
     if (mimeType) {
