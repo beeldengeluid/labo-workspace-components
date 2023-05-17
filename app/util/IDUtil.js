@@ -1,19 +1,4 @@
 const IDUtil = {
-  //used to generate a more compact form for unique strings (e.g. collection names) to be used as guid
-  hashCode: function (s) {
-    let hash = 0,
-      i,
-      chr,
-      len;
-    if (s.length === 0) return hash;
-    for (i = 0, len = s.length; i < len; i++) {
-      chr = s.charCodeAt(i);
-      hash = (hash << 5) - hash + chr;
-      hash |= 0; // Convert to 32bit integer
-    }
-    return hash;
-  },
-
   //generates a guid from nothing
   guid: function () {
     return (
@@ -46,11 +31,6 @@ const IDUtil = {
       return "bg__" + componentPrefix + "__" + componentAttribute;
     }
     return "bg__" + componentAttribute;
-  },
-
-  //de user ID moet naar lowercase, omdat ES geen indexen met hoofdletters accepteert!
-  personalCollectionId(clientId, userId, collectionId) {
-    return "pc__" + [clientId, userId.toLowerCase(), collectionId].join("__");
   },
 };
 
