@@ -1,7 +1,6 @@
 env:
   browser: true
   es2021: true
-  "jest/globals": true
 extends:
   - eslint:recommended
   - plugin:react/recommended
@@ -14,7 +13,6 @@ parserOptions:
   sourceType: module
 plugins:
   - react
-  - jest
 rules: {}
 settings:
   react:
@@ -24,6 +22,3 @@ globals:
   _config: readonly
   _play: readonly
   $: readonly
-  OpenSeadragon: readonly
-  YT: readonly
-  Vimeo: readonly

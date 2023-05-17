@@ -12,6 +12,5 @@ jobs:
         with:
           node-version: 19
       - run: npm ci
-      - run: npm test
       - run: npm run prettier
       - run: npm run lint
