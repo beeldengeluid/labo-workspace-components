@@ -4,9 +4,6 @@
 // import image urls
 @import './_images.scss';
 
-//import mixins, containing generic all purpose small elements
-@import './_mixins.scss';
-
 //imports from our very own component library (clients can override the exposed variables)
 @import 'shared/index.scss';
 
