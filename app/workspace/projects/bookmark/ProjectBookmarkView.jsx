@@ -4,6 +4,7 @@ import BookmarkTable from "./BookmarkTable";
 import IDUtil from "../../../util/IDUtil";
 import SessionStorageHandler from "../../../util/SessionStorageHandler";
 import ProjectViewWrapper from "../ProjectViewWrapper";
+import './ProjectBookmarkView.scss';
 
 /**
  * Main page for a project's bookmarks and annotations. This page mainly handles

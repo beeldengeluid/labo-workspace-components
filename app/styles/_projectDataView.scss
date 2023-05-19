@@ -1,0 +1,36 @@
+@import 'variables';
+@import 'images';
+
+.bg__project-data-view{
+    @import 'tools';
+
+    .tools{
+      background-color: $clWhite;
+
+      .radiogroup{
+        display: inline-block;
+        label,input{
+          cursor: pointer;
+        }
+      }
+
+      .view{
+        margin-bottom: 5px;
+      }
+
+      .export-button{
+        float:right;
+        margin-top: -45px;
+        margin-right: 0;
+        margin-bottom: 0;
+      }
+
+      .type-label{
+        padding-left: 10px;
+      }
+
+      .type-select{
+        margin-left: 0px;
+      }
+    }
+  }
