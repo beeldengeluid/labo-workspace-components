@@ -16,9 +16,7 @@ import MetamorfozeProgramGuideConfig from "./MetamorfozeProgramGuideConfig";
 import OpenBeeldenNISVConfig from "./OpenBeeldenNISVConfig";
 
 //non media suite collections
-import ArtTubeConfig from "./ArtTubeConfig";
 import KijkEnLuisterCijfersConfig from "./KijkEnLuisterCijfersConfig";
-import MotUConfig from "./MotUConfig";
 import RVDFilmContractsConfig from "./RVDFilmContractsConfig";
 import SoundbitesConfig from "./SoundbitesConfig";
 import RadioOranjeConfig from "./RadioOranjeConfig";
@@ -35,17 +33,15 @@ const CollectionMapping = {
   "eye-desmet-affiches": EYEDesmetAfficheConfig,
   "eye-desmet-films": EYEDesmetFilmConfig,
   "eye-desmet-papers4": EYEDesmetPapersPageConfig,
-  motu: MotUConfig,
-  arttube: ArtTubeConfig,
   "rvd-collection*": RVDFilmContractsConfig,
   "open-beelden-beeldengeluid": OpenBeeldenNISVConfig,
   "open-beelden-eye": OpenBeeldenNISVConfig,
   "open-beelden-stichting-natuurbeelden": OpenBeeldenNISVConfig,
   "kb-newspapers*": KBNewspaperAggrConfig,
   "dans*": DANSOralHistoryConfig,
-  kijkenluistercijfers: KijkEnLuisterCijfersConfig,
+  "kijkenluistercijfers": KijkEnLuisterCijfersConfig,
   "kijkenluistercijfers*": KijkEnLuisterCijfersConfig,
-  soundbites: SoundbitesConfig,
+  "soundbites": SoundbitesConfig,
   "radio-oranje": RadioOranjeConfig,
   "niod-mediaoorlog*": NIODMediaOorlogConfig,
 };
