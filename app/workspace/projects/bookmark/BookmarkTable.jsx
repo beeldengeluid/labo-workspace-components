@@ -19,6 +19,7 @@ import NestedTable from "../../helpers/NestedTable";
 import CollectionUtil from "../../../util/CollectionUtil";
 import LocalStorageHandler from "../../../util/LocalStorageHandler";
 import Loading from "../../../shared/Loading";
+import "./BookmarkTable.scss";
 
 const CUSTOM = "custom"; // removed AnnotationConstants (still in labo-components)
 /**
