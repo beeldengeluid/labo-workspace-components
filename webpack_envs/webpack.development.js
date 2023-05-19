@@ -36,6 +36,7 @@ module.exports = {
         test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)|\.gif($|\?)/,
         loader: "url-loader",
       },
+      // NOTE: oude config
       // {
       //   test: /\.scss$/,
       //   use: [
@@ -46,6 +47,8 @@ module.exports = {
       //     "sass-loader",
       //   ],
       // },
+      // NOTE: nu dit toegepast:
+      // https://akirautio.com/blog/creating-a-common-component-library-with-css-and-sass-in-react
       {
         test: /\.s[ac]ss$/i,
         use: ["style-loader", "css-loader", "sass-loader"],

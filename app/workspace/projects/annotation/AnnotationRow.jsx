@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import IDUtil from "../../../util/IDUtil";
 import { BookmarkTranslator } from "../../helpers/BookmarkTranslator";
 import classNames from "classnames";
+import './AnnotationRow.scss'
 
 /**
  * A row with annotation information and sub level bookmarks

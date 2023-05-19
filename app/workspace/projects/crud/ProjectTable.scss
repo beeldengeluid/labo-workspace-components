@@ -1,7 +1,10 @@
+@import '../../../styles/_images';
+@import '../../../styles/_variables';
+
 .bg__project-table{
 
-  @import '../_tools.scss';
-  @import '../_modal.scss';
+  @import '../../../styles/_tools';
+  @import '../../../styles/_modal';
 
   .error{
     padding:10px;

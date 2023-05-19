@@ -1,12 +1,14 @@
+@import '../../../styles/variables';
+
 .bg__annotation-table{
-  @import '../_resultTop.scss';
+  @import '../../../styles/resultTop';
 
   .type-list{
     margin-top: 10px;
     border-top: 2px solid $clGreyTint;
   }
 
-  @import '../_modal.scss';
+  @import '../../../styles/modal';
 
   &.loading{
     .bg__nested-table{

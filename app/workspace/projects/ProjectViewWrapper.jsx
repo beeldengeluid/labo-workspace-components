@@ -8,6 +8,7 @@ import AnnotationAPI from "../../api/AnnotationAPI";
 
 import IDUtil from "../../util/IDUtil";
 import { setBreadCrumbsFromMatch } from "../helpers/BreadCrumbs";
+import './ProjectViewWrapper.scss';
 
 /**
  * Wrapper for pages within a single project. It provides a submenu that gives
