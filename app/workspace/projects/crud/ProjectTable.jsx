@@ -9,7 +9,7 @@ import ProjectUtil from "../../../util/ProjectUtil";
 import LocalStorageHandler from "../../../util/LocalStorageHandler";
 import { exportDataAsJSON } from "../../helpers/Export";
 import SortTable from "../../SortTable";
-import './ProjectTable.scss';
+import "./ProjectTable.scss";
 
 /**
  * Table that shows all the projects. It handles the loading and filtering of the projects data.

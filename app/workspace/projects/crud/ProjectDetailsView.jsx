@@ -4,7 +4,7 @@ import IDUtil from "../../../util/IDUtil";
 import SessionStorageHandler from "../../../util/SessionStorageHandler";
 import ProjectViewWrapper from "../ProjectViewWrapper";
 import { Link } from "react-router-dom";
-import './ProjectDetailsView.scss';
+import "./ProjectDetailsView.scss";
 /**
  * Show the details of the given project.
  */
