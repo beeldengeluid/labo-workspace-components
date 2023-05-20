@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IDUtil from "../../util/IDUtil";
+import "./NestedTable.scss";
 
 /**
  * Display a bookmark/annotation result list and handle the filtering and sorting

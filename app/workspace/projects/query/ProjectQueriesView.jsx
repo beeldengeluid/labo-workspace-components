@@ -6,6 +6,7 @@ import FlexRouter from "../../../util/FlexRouter";
 import LocalStorageHandler from "../../../util/LocalStorageHandler";
 import ProjectQueriesTable from "./ProjectQueriesTable";
 import ProjectViewWrapper from "../ProjectViewWrapper";
+import "./ProjectQueriesView.scss";
 
 // the ProjectQueriesView is wrapped in a ProjectViewWrapper and returned to the Router
 const WrappedProjectQueriesView = ({ clientId, user, params, recipe }) => {

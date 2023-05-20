@@ -11,6 +11,7 @@ import CopyToClipboard from "../../../helpers/CopyToClipboard";
 import MessageHelper from "../../../helpers/MessageHelper";
 import LocalStorageHandler from "../../../util/LocalStorageHandler";
 import ComponentUtil from "../../../util/ComponentUtil";
+import "./ProjectQueriesTable.scss";
 
 class ProjectQueriesTable extends React.PureComponent {
   constructor(props) {
