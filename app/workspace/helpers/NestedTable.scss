@@ -175,7 +175,7 @@
             color: $clDark;
             text-transform: uppercase;
             font-family: $fontHeading;
-            padding: 0px 30px 0px 0px;
+            padding: 0px 30px 0px 10px;
             background-position: center right 10px;
             background-repeat: no-repeat;
             background-image: $arrowDownDarkUrl;
@@ -215,7 +215,7 @@
               border-top: 16px solid transparent;
               border-left: 16px solid transparent;
               border-right: 16px solid $clGreyTint;
-              border-bottom: 15px solid $clGreyTint;
+              border-bottom: 16px solid $clGreyTint;
               /*
               border-top: 19px solid transparent;
               border-left: 15px solid transparent;
