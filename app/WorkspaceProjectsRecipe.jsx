@@ -16,6 +16,7 @@ import ProjectEditView from "./workspace/projects/crud/ProjectEditView";
 
 //queries view
 import ProjectQueriesView from "./workspace/projects/query/ProjectQueriesView";
+import "./WorkspaceProjectsRecipe.scss";
 
 const WORKSPACE_TAB_ID = "bg__project-tab";
 const WORKSPACE_PROJECT_DETAILS_TAB_ID = "details";
