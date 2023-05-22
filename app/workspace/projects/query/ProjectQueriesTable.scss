@@ -7,3 +7,26 @@
   }
 
 }
+
+.bg__custom-query-tooltip {
+  z-index: 9999 !important;
+
+  h3 {
+    font-size: 20px !important;
+    padding-bottom: 10px !important;
+  }
+  padding: 30px !important;
+  background-color: rgba(0,0,0, .9) !important;
+
+  ul {
+    li {
+      padding-left: 20px !important;
+    }
+  }
+  .bg__selectedFacet-list {
+    padding-left: 10px;
+  }
+  .bg_queryDetails-wrapper {
+    padding: 10px 0;
+  }
+}

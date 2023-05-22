@@ -243,7 +243,7 @@ class ProjectQueriesTable extends React.PureComponent {
                       )
                     }
                     clickable={true}
-                    className="bg__custom-queryTooltip"
+                    className={IDUtil.cssClassName("custom-query-tooltip")}
                   />
                   <span className="bg__searchTerm">
                     {namedQuery.query.toHumanReadableString()}

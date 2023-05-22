@@ -1,4 +1,6 @@
-.row-menu{
+@import './variables';
+
+.row-menu {
   float:right;
   display: inline-block;
   width: 25px;
@@ -7,11 +9,11 @@
   text-align: center;
   cursor: pointer;
   z-index: 10;
-  
+
   span{
     line-height: 35px;
-    font-size: 1.1em;          
-    font-weight: bold;    
+    font-size: 1.1em;
+    font-weight: bold;
   }
 
   ul{

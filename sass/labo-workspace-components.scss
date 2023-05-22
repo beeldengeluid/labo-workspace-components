@@ -1,8 +1,3 @@
-//then import the component variables that are exposed for clients importing the scss version of this library
-@import './_variables.scss';
-
-// import image urls
-@import './_images.scss';
 
 //imports from our very own component library (clients can override the exposed variables)
 @import 'shared/index.scss';

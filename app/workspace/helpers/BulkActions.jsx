@@ -1,7 +1,7 @@
 import React from "react";
 import IDUtil from "../../util/IDUtil";
-
 import PropTypes from "prop-types";
+import "./BulkActions.scss";
 
 /**
  * A dropdown with actions, that can be applied on multiple items

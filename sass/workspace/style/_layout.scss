@@ -3,13 +3,14 @@ body{
   margin:0;
   font-family: $fontBody;
   font-size: 13.5px;
+  line-height: 1;
 }
 
 /**
 * Content
 */
 
-h1,h2,h3,h4,h5{
+h1,h2,h3,h4,h5 {
  font-family: $fontHeading;
  font-weight: 500;
  line-height: 1.1em;
@@ -128,6 +129,23 @@ p{
       opacity: 1;
     }
   }
+}
+
+/**
+* Lists & table
+*/
+
+ol, ul {
+  list-style: none;
+}
+
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+input, input[type=checkbox], input[type=radio]{
+  vertical-align: middle;
 }
 
 /**

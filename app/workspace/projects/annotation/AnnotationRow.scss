@@ -19,6 +19,7 @@
     }
 
     .actions{
+      @import '../../../styles/rowMenu';
       .row-menu{
         margin-top: 0px;
       }
