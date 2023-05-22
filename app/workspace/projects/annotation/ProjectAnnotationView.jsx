@@ -4,7 +4,7 @@ import IDUtil from "../../../util/IDUtil";
 import SessionStorageHandler from "../../../util/SessionStorageHandler";
 import ProjectViewWrapper from "../ProjectViewWrapper";
 import PropTypes from "prop-types";
-
+import "./ProjectAnnotationView.scss";
 /**
  * Main page for a project's bookmarks and annotations. This page mainly handles
  * the view selection: Bookmark- or Annotation centric.

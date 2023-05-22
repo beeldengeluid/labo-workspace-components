@@ -36,15 +36,22 @@ module.exports = {
         test: /\.woff($|\?)|\.woff2($|\?)|\.ttf($|\?)|\.eot($|\?)|\.svg($|\?)|\.gif($|\?)/,
         loader: "url-loader",
       },
+      // NOTE: oude config
+      // {
+      //   test: /\.scss$/,
+      //   use: [
+      //     MiniCssExtractPlugin.loader,
+      //     {
+      //       loader: "css-loader",
+      //     },
+      //     "sass-loader",
+      //   ],
+      // },
+      // NOTE: nu dit toegepast:
+      // https://akirautio.com/blog/creating-a-common-component-library-with-css-and-sass-in-react
       {
-        test: /\.scss$/,
-        use: [
-          MiniCssExtractPlugin.loader,
-          {
-            loader: "css-loader",
-          },
-          "sass-loader",
-        ],
+        test: /\.s[ac]ss$/i,
+        use: ["style-loader", "css-loader", "sass-loader"],
       },
     ],
   },

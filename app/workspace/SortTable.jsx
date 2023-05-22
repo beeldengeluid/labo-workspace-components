@@ -4,6 +4,7 @@ import classNames from "classnames";
 import IDUtil from "../util/IDUtil";
 import BulkActions from "./helpers/BulkActions";
 import Pagination from "./helpers/Pagination";
+import "./SortTable.scss";
 
 /**
  * A Table component with headers and rows that handles row selection and pagination.

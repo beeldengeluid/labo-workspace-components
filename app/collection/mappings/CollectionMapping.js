@@ -39,9 +39,9 @@ const CollectionMapping = {
   "open-beelden-stichting-natuurbeelden": OpenBeeldenNISVConfig,
   "kb-newspapers*": KBNewspaperAggrConfig,
   "dans*": DANSOralHistoryConfig,
-  "kijkenluistercijfers": KijkEnLuisterCijfersConfig,
+  kijkenluistercijfers: KijkEnLuisterCijfersConfig,
   "kijkenluistercijfers*": KijkEnLuisterCijfersConfig,
-  "soundbites": SoundbitesConfig,
+  soundbites: SoundbitesConfig,
   "radio-oranje": RadioOranjeConfig,
   "niod-mediaoorlog*": NIODMediaOorlogConfig,
 };

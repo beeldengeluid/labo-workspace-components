@@ -12,6 +12,7 @@ import ResourceViewerModal from "../../ResourceViewerModal";
 import NestedTable from "../../helpers/NestedTable";
 import AnnotationRow from "./AnnotationRow";
 import classNames from "classnames";
+import "./AnnotationTable.scss";
 
 /**
  * This view handles the loading, filtering and selection of data of

@@ -5,6 +5,7 @@ import { Link, useLocation } from "react-router-dom";
 import IDUtil from "../../../util/IDUtil";
 import { setBreadCrumbsFromMatch } from "../../helpers/BreadCrumbs";
 import ProjectTable from "./ProjectTable";
+import "./ProjectListView";
 
 /**
  * Top level component/page for the projects overview.

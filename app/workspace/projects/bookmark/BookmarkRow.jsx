@@ -7,6 +7,7 @@ import { AnnotationTranslator } from "../../helpers/AnnotationTranslator";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
+import "./BookmarkRow.scss";
 
 const CUSTOM = "custom"; // removed AnnotationConstants (still in labo-components)
 /**
@@ -322,6 +323,8 @@ class BookmarkRow extends React.PureComponent {
               <p
                 onClick={this.openResourceViewer}
                 title={"Resource ID: " + bookmark.resourceId}
+                //style={{"color": "red"}}
+                className="testhaha"
               >
                 {bookmark.object.error
                   ? "error: source catalogue not available"

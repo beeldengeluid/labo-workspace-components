@@ -1,6 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import IDUtil from "../util/IDUtil";
+import "./Loading.scss";
 
 const renderSpinner = (message) => (
   <div

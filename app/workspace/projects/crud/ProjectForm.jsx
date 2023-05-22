@@ -4,6 +4,7 @@ import IDUtil from "../../../util/IDUtil";
 import Project from "../../../model/Project";
 import { Link } from "react-router-dom";
 import ProjectAPI from "../../../api/ProjectAPI";
+import "./ProjectForm.scss";
 
 /**
  * Shows the project form and handles saving the project data.

@@ -1,3 +1,5 @@
+@import '../../../styles/images';
+
 .bg__annotation-row.item-row{
   .item{
     .classification{
@@ -14,14 +16,15 @@
 
     .created{
       width: 100px;
-    }  
+    }
 
     .actions{
+      @import '../../../styles/rowMenu';
       .row-menu{
-        margin-top: 0px;          
+        margin-top: 0px;
       }
     }
-    
+
     .icon.bookmark{
       width: 20px;
       background-size: 14px;

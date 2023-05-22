@@ -1,7 +1,7 @@
 import React from "react";
 import IDUtil from "../../util/IDUtil";
-
 import PropTypes from "prop-types";
+import "./Pagination.scss";
 
 /**
  * Pagination element that shows page numbers around the current page

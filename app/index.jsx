@@ -1,7 +1,6 @@
 import React from "react";
 import { createRoot } from "react-dom/client";
 import WorkspaceProjectsRecipe from "./WorkspaceProjectsRecipe";
-import "../sass/labo-workspace-components.scss";
 //CSS must be included in the entry point to allow Webpack
 // to detect and run CSS .
 

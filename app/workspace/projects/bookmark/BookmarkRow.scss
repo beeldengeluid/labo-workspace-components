@@ -1,3 +1,5 @@
+@import '../../../styles/images';
+
 .bg__bookmark-row.item-row{
   .item{
     .image{
@@ -33,6 +35,7 @@
     }
 
     .actions {
+      @import '../../../styles/rowMenu';
       .sublevel-button-container .sublevel-button{
         padding-left: 15px;
         border-left: 1px solid rgba(0,0,0,0.3);

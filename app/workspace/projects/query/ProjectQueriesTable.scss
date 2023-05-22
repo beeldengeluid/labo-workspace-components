@@ -1,6 +1,14 @@
-// Nasty use of !important but necessary to customize the tooltip
-// https://www.npmjs.com/package/react-tooltip
-.bg__custom-queryTooltip {
+.bg__project-queries-table{
+
+  @import '../../../styles/_tools.scss';
+
+  .error{
+    padding:10px;
+  }
+
+}
+
+.bg__custom-query-tooltip {
   z-index: 9999 !important;
 
   h3 {
