@@ -30,6 +30,9 @@
         &.content-media{
           min-width: 120px;
           max-width: 120px;
+          p > span {
+            border: 0;
+          }
         }
       }
     }
