@@ -364,6 +364,7 @@ class BookmarkTable extends React.PureComponent {
 
       //now delete the whole selection in a single call to the API
       AnnotationAPI.deleteUserAnnotations(
+        this.props.project.id,
         this.props.user.id,
         deletionList,
         (success) => {

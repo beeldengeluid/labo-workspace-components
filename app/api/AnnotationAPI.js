@@ -1,75 +1,4 @@
 export default class AnnotationAPI {
-  /* ------------ BASIC ANNOTATION CRUD (USER/PROJECT AGNOSTIC)--------------------*/
-
-  static saveAnnotation = (annotation, callback) => {
-    let url = _config.ANNOTATION_API_BASE + "/annotation";
-    let method = "POST";
-    if (annotation.id) {
-      url += "/" + annotation.id;
-      method = "PUT";
-    }
-    const xhr = new XMLHttpRequest();
-    xhr.onreadystatechange = function () {
-      if (xhr.readyState === XMLHttpRequest.DONE) {
-        if (xhr.status === 200) {
-          if (callback) {
-            callback(JSON.parse(xhr.responseText));
-          }
-        } else {
-          if (callback) {
-            callback(null);
-          }
-        }
-      }
-    };
-    xhr.open(method, url);
-    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-    xhr.send(JSON.stringify(annotation));
-  };
-
-  static getAnnotation = (annotationId, callback) => {
-    if (annotationId) {
-      const url = _config.ANNOTATION_API_BASE + "/annotation/" + annotationId;
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            callback(JSON.parse(xhr.responseText));
-          } else {
-            callback(null);
-          }
-        }
-      };
-      xhr.open("GET", url);
-      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-      xhr.send();
-    }
-  };
-
-  //TODO remove and user deleteUserAnnotation instead
-  static deleteAnnotation = (annotation, callback) => {
-    if (annotation.id) {
-      if (annotation.motivation === "bookmarking") {
-        alert("will not delete a bookmark group annotation!");
-        return;
-      }
-      const url = _config.ANNOTATION_API_BASE + "/annotation/" + annotation.id;
-      const xhr = new XMLHttpRequest();
-      xhr.onreadystatechange = function () {
-        if (xhr.readyState === XMLHttpRequest.DONE) {
-          if (xhr.status === 200) {
-            callback(JSON.parse(xhr.responseText), annotation);
-          } else {
-            callback(null);
-          }
-        }
-      };
-      xhr.open("DELETE", url);
-      xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-      xhr.send();
-    }
-  };
-
   /* ------------ ANNOTATION SEARCH --------------------------------------*/
 
   static getFilteredAnnotations = (
@@ -202,9 +131,19 @@ export default class AnnotationAPI {
 
   /* ------------ DELETE USER ANNOTATIONS (PROJECT AGNOSTIC)--------------------*/
 
-  static deleteUserAnnotations = (userId, deletionList, callback) => {
+  static deleteUserAnnotations = (
+    projectId,
+    userId,
+    deletionList,
+    callback
+  ) => {
     const url =
-      _config.ANNOTATION_API_BASE + "/user/" + userId + "/annotations";
+      _config.ANNOTATION_API_BASE +
+      "/user/" +
+      userId +
+      "/project/" +
+      projectId +
+      "/annotations";
     const params = {
       toDelete: deletionList,
     };
