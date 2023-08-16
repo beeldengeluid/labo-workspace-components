@@ -137,6 +137,7 @@ export default class AnnotationAPI {
     deletionList,
     callback
   ) => {
+    console.debug("DELETING USER ANNOTATIONS", deletionList);
     const url =
       _config.ANNOTATION_API_BASE +
       "/user/" +
