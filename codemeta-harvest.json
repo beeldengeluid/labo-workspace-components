@@ -1,0 +1,64 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "http://schema.org",
+        "https://w3id.org/software-types"
+    ],
+    "producer": [
+        {
+            "@id": "https://www.beeldengeluid.nl/",
+            "@type": "Organization",
+            "name": "Netherlands Institute for Sound and Vision",
+            "url": "https://www.beeldengeluid.nl/",
+            "location": {
+                "@type": "Place",
+                "name": "Hilversum"
+            }
+        }
+    ],
+    "sourceOrganization": {
+        "@id": "https://www.beeldengeluid.nl/"
+    },
+    "funding": [
+        {
+            "@type": "Grant",
+            "name": "CLARIAH-CORE (NWO grant 184.033.101)",
+            "url": "https://www.clariah.nl",
+            "funder": {
+                "@type": "Organization",
+                "name": "NWO",
+                "url": "https://www.nwo.nl"
+            }
+        },
+        {
+            "@type": "Grant",
+            "name": "CLARIAH-PLUS (NWO grant 184.034.023)",
+            "funder": {
+                "@type": "Organization",
+                "name": "NWO",
+                "url": "https://www.nwo.nl"
+            }
+        }
+    ],
+    "developmentStatus": [
+        "https://www.repostatus.org/#active",
+        "https://w3id.org/research-technology-readiness-levels#Level9Proven"
+    ],
+    "keywords": [
+        "front-end",
+        "workspace",
+        "bookmarks"
+    ],
+    "targetProduct": [
+        {
+            "@type": "WebApplication",
+            "name": "CLARIAH Media Suite",
+            "url": "https://mediasuite.clariah.nl",
+            "provider": {
+                "@type": "Organization",
+                "name": "Netherlands Institute for Sound and Vision",
+                "url": "https://beeldengeluid.nl"
+            }
+        }
+    ]
+}
