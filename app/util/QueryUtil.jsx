@@ -24,7 +24,7 @@ export default class QueryUtil {
     if (!query || !userId || !projectId) return null;
 
     QueryAPI.query_operation(query.id, userId, projectId, "share", (status) => {
-        callback(status)
-      });
-  };  
+      callback(status);
+    });
+  };
 }

@@ -157,16 +157,15 @@ class ProjectQueriesTable extends React.PureComponent {
     );
   };
 
-
   shareQuery = (namedQuery) => {
     const msg =
-        "Are you sure you want to share query: " +
-        namedQuery.name +
-          "?\n" + 
-          "\nSharing copies a link to the clipboard. Other users can click on the link and see" +
-          " the results of the shared query on the Search page. They cannot edit the query." + 
-          "\nIf you delete the query, the link will stop working." + 
-          "\nUsers can save a copy of the query in their own workspace.";
+      "Are you sure you want to share query: " +
+      namedQuery.name +
+      "?\n" +
+      "\nSharing copies a link to the clipboard. Other users can click on the link and see" +
+      " the results of the shared query on the Search page. They cannot edit the query." +
+      "\nIf you delete the query, the link will stop working." +
+      "\nUsers can save a copy of the query in their own workspace.";
     if (ComponentUtil.userConfirm(msg)) {
       this.shareProjectQuery(
         this.props.user.id,
@@ -176,23 +175,16 @@ class ProjectQueriesTable extends React.PureComponent {
     }
   };
 
-
   shareProjectQuery = (userId, project, queryToShare) => {
-    QueryUtil.shareQuery(
-      queryToShare,
-      userId,
-      project.id,
-      (queryShared) => {
-        if (queryShared) {
-          let queryUrl = FlexRouter.createSearchQueryUrl(queryToShare.id);
-          navigator.clipboard.writeText(queryUrl);
-          alert("Query link has been copied to the clipboard");
-        }
-        else {
-          alert("An error occurred while sharing this query");
-        }
+    QueryUtil.shareQuery(queryToShare, userId, project.id, (queryShared) => {
+      if (queryShared) {
+        let queryUrl = FlexRouter.createSearchQueryUrl(queryToShare.id);
+        navigator.clipboard.writeText(queryUrl);
+        alert("Query link has been copied to the clipboard");
+      } else {
+        alert("An error occurred while sharing this query");
       }
-    );
+    });
   };
   onSelectQuery = (item) => this.setState({ selectedQueries: item });
 

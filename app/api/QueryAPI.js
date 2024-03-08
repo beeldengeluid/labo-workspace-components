@@ -127,7 +127,13 @@ export default class QueryAPI {
     xhr.send();
   };
 
-  static query_operation = (queryId, userId, projectId, operation, callback) => {
+  static query_operation = (
+    queryId,
+    userId,
+    projectId,
+    operation,
+    callback
+  ) => {
     let url = _config.QUERY_API_BASE + "/";
     url += userId + "/";
     url += "projects/" + projectId + "/";
@@ -154,5 +160,5 @@ export default class QueryAPI {
     xhr.open("GET", url);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send({});
-  };  
+  };
 }
