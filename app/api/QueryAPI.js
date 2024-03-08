@@ -126,4 +126,33 @@ export default class QueryAPI {
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send();
   };
+
+  static query_operation = (queryId, userId, projectId, operation, callback) => {
+    let url = _config.QUERY_API_BASE + "/";
+    url += userId + "/";
+    url += "projects/" + projectId + "/";
+    url += "queries/";
+    url += encodeURIComponent(queryId) + "/";
+    url += operation;
+    const xhr = new XMLHttpRequest();
+    xhr.onreadystatechange = function () {
+      if (xhr.readyState === XMLHttpRequest.DONE) {
+        if (xhr.status === 200) {
+          const respData = JSON.parse(xhr.responseText);
+          if (!respData) {
+            callback(null);
+          } else if (respData.error) {
+            callback(new APIError(respData.error));
+          } else {
+            callback(respData);
+          }
+        } else {
+          callback(null);
+        }
+      }
+    };
+    xhr.open("GET", url);
+    xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+    xhr.send({});
+  };  
 }
