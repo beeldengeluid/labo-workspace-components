@@ -157,7 +157,7 @@ export default class QueryAPI {
         }
       }
     };
-    xhr.open("GET", url);
+    xhr.open("PUT", url);
     xhr.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
     xhr.send({});
   };
