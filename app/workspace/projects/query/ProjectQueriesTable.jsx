@@ -163,8 +163,8 @@ class ProjectQueriesTable extends React.PureComponent {
       namedQuery.name +
       "?\n" +
       "\nSharing copies a link to the clipboard. Other users can click on the link and see" +
-      " the results of the shared query on the Search page. They cannot edit the query." +
-      "\nIf you delete the query, the link will stop working." +
+      " the results of the shared query on the Search page. They cannot edit the query.\n" +
+      "\nIf you delete the query, the link will stop working.\n" +
       "\nUsers can save a copy of the query in their own workspace.";
     if (ComponentUtil.userConfirm(msg)) {
       this.shareProjectQuery(
