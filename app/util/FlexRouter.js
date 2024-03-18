@@ -3,11 +3,18 @@ Check this out later: https://zhirzh.github.io/2017/01/30/browser-history-functi
 */
 
 export default class FlexRouter {
-  static gotoSingleSearch = (queryId) => {
+  static createSearchQueryUrl = (queryId) => {
     let url = FlexRouter.__getBaseUrl() + "/tool/single-search";
     if (queryId) {
       url += "?queryId=" + queryId;
     }
+    return url;
+  };
+
+  static gotoSingleSearch = (queryId) => {
+    let url = FlexRouter.createSearchQueryUrl(queryId);
+    console.log("returned url");
+    console.log(url);
     document.location.href = url;
   };
 
