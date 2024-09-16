@@ -94,7 +94,7 @@ export default class KijkEnLuisterCijfersConfig extends CollectionConfig {
   findMatchingMediaFragments = (
     resource,
     searchTerm,
-    activeMediaObject = null
+    activeMediaObject = null,
   ) => {
     if (!resource.rawData.pages) return null;
     if (!resource.playableContent) return null;
@@ -103,7 +103,7 @@ export default class KijkEnLuisterCijfersConfig extends CollectionConfig {
     try {
       regex = RegexUtil.generateRegexForSearchTerm(searchTerm);
     } catch (err) {
-      console.debug("invalid regex");
+      console.debug("invalid regex", err);
     }
 
     if (!regex) return null;
@@ -116,7 +116,7 @@ export default class KijkEnLuisterCijfersConfig extends CollectionConfig {
           ? page.assetId ===
             activeMediaObject.assetId.substring(
               0,
-              activeMediaObject.assetId.indexOf("__")
+              activeMediaObject.assetId.indexOf("__"),
             )
           : true)
       );
@@ -138,7 +138,7 @@ export default class KijkEnLuisterCijfersConfig extends CollectionConfig {
       ? resource.playableContent.find(
           (mo) =>
             mo.assetId.substring(0, mo.assetId.indexOf("__")) ===
-            matchingBlock.assetId
+            matchingBlock.assetId,
         )
       : null;
     if (!matchingMediaObject) return null;

@@ -21,7 +21,7 @@ export default class MessageHelper {
         </div>
         {MessageHelper.__renderDateRange(query.dateRange, collectionConfig)}
         {MessageHelper.__renderSelectedFacets(
-          MessageHelper.__getFormattedSelectedFacets(query)
+          MessageHelper.__getFormattedSelectedFacets(query),
         )}
         {MessageHelper.__renderFieldsCategory(query.fieldCategory)}
         {MessageHelper.__renderEntities(query.entities)}

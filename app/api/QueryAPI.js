@@ -132,7 +132,7 @@ export default class QueryAPI {
     userId,
     projectId,
     operation,
-    callback
+    callback,
   ) => {
     let url = _config.QUERY_API_BASE + "/";
     url += userId + "/";

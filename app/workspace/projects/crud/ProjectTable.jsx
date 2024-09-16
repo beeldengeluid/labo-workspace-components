@@ -100,7 +100,7 @@ class ProjectTable extends React.PureComponent {
           (project) =>
             (project.name && project.name.toLowerCase().includes(k)) ||
             (project.description &&
-              project.description.toLowerCase().includes(k))
+              project.description.toLowerCase().includes(k)),
         );
       });
     }
@@ -165,24 +165,24 @@ class ProjectTable extends React.PureComponent {
     switch (sort.field) {
       case "name":
         sorted.sort((a, b) =>
-          getLowerSafe(a.name) > getLowerSafe(b.name) ? 1 : -1
+          getLowerSafe(a.name) > getLowerSafe(b.name) ? 1 : -1,
         );
         break;
       case "description":
         sorted.sort((a, b) =>
-          getLowerSafe(a.description) > getLowerSafe(b.description) ? -1 : 1
+          getLowerSafe(a.description) > getLowerSafe(b.description) ? -1 : 1,
         );
         break;
       case "owner":
         sorted.sort((a, b) =>
-          getLowerSafe(a.owner.name) > getLowerSafe(b.owner.name) ? 1 : -1
+          getLowerSafe(a.owner.name) > getLowerSafe(b.owner.name) ? 1 : -1,
         );
         break;
       case "access":
         sorted.sort((a, b) =>
           a.getAccess(this.props.user.id) > b.getAccess(this.props.user.id)
             ? 1
-            : -1
+            : -1,
         );
         break;
       case "created":
@@ -198,7 +198,7 @@ class ProjectTable extends React.PureComponent {
   setActiveProject = (project) => {
     LocalStorageHandler.storeJSONInLocalStorage(
       "stored-active-project",
-      project
+      project,
     );
   };
 
@@ -276,7 +276,7 @@ class ProjectTable extends React.PureComponent {
                     ProjectUtil.deleteProjects(
                       [project],
                       this.props.user.id,
-                      this.loadData
+                      this.loadData,
                     )
                   }
                 >

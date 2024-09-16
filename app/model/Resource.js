@@ -28,7 +28,7 @@ export default class Resource {
     matchesPerField = null,
     searchTerm = null,
     entities = null,
-    transcripts = null
+    transcripts = null,
   ) {
     this.index = index; //ES index
     this.docType = docType; //ES doc_type
@@ -64,7 +64,7 @@ export default class Resource {
     // the result data formatted according to the collectionConfig
     const mappedData = collectionConfig.getItemDetailData(
       rawSearchResult,
-      query && query.dateRange ? query.dateRange.field : null
+      query && query.dateRange ? query.dateRange.field : null,
     );
 
     //convert the playable content to UI friendly MediaObjects
@@ -72,7 +72,7 @@ export default class Resource {
     let playableContent = null;
     if (mappedData.playableContent && mappedData.playableContent.length > 0) {
       playableContent = mappedData.playableContent.map((mo) =>
-        MediaObject.construct(mo, collectionConfig)
+        MediaObject.construct(mo, collectionConfig),
       );
     }
 
@@ -99,8 +99,8 @@ export default class Resource {
             mappedData.highlights[field].map(
               //somehow ES gives duplicates as well...
               (emString) =>
-                emString.replaceAll("<em>", "").replaceAll("</em>", "")
-            )
+                emString.replaceAll("<em>", "").replaceAll("</em>", ""),
+            ),
           );
         }
       });
@@ -143,7 +143,7 @@ export default class Resource {
       //(e.g. see ResourceViewer loading process)
       null,
 
-      mappedData.transcripts
+      mappedData.transcripts,
     );
   }
 
@@ -158,7 +158,7 @@ export default class Resource {
     let mediaTypes = collectionConfig.getCollectionMediaTypes();
     if (this.mediaTypes) {
       mediaTypes = mediaTypes.concat(
-        this.mediaTypes.filter((mt) => !mediaTypes.includes(mt))
+        this.mediaTypes.filter((mt) => !mediaTypes.includes(mt)),
       );
     }
 
@@ -167,7 +167,7 @@ export default class Resource {
       this.matchesPerField && Object.keys(this.matchesPerField).length !== 0
         ? Object.keys(this.matchesPerField).reduce(
             (acc, cur) => (acc += this.matchesPerField[cur].length),
-            0
+            0,
           )
         : 0;
     return {
@@ -326,7 +326,7 @@ export default class Resource {
         PropTypes.shape({
           url: PropTypes.string,
           message: PropTypes.string,
-        })
+        }),
       ), // [{url : '', message : ''}] to express related external source (FIXME not shown in new RV!)
       playableContent: PropTypes.arrayOf(MediaObject.getPropTypes(false)), // playable (AV) content representing the resource (instance of MediaObject)
       mediaTypes: PropTypes.arrayOf(PropTypes.string), // media types of the playable content (used to draw representative icons)

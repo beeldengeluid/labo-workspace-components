@@ -10,7 +10,7 @@ export default class ComponentUtil {
     stateVariable,
     elementId,
     manualCloseRequired,
-    callback
+    callback,
   ) => {
     const stateObj = {};
     stateObj[stateVariable] = false;

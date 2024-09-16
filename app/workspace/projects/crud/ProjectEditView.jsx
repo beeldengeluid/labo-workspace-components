@@ -51,7 +51,7 @@ const ProjectEditView = ({ clientId, user, params, recipe }) => {
       <ProjectForm
         submitButton="save"
         cancelLink={`/workspace/projects/'${encodeURIComponent(
-          project.id
+          project.id,
         )}/details`}
         project={project}
         projectDidSave={(projId) => {

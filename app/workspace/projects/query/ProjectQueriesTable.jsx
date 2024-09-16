@@ -29,7 +29,7 @@ class ProjectQueriesTable extends React.PureComponent {
       ProjectQueriesTable.propTypes,
       this.props,
       "prop",
-      this.constructor.name
+      this.constructor.name,
     );
   }
 
@@ -38,7 +38,7 @@ class ProjectQueriesTable extends React.PureComponent {
     if (this.props.project) {
       LocalStorageHandler.storeJSONInLocalStorage(
         "stored-active-project",
-        this.props.project
+        this.props.project,
       );
     }
   }
@@ -66,10 +66,10 @@ class ProjectQueriesTable extends React.PureComponent {
       {
         queries: this.filterQueries(
           project && project.queries ? project.queries : [],
-          this.state.filter
+          this.state.filter,
         ),
       },
-      () => this.onChange()
+      () => this.onChange(),
     );
 
   //Filter query list by given filter
@@ -79,7 +79,7 @@ class ProjectQueriesTable extends React.PureComponent {
       filter.keywords.split(" ").forEach((k) => {
         //FIXME this seems wrong, the filter will only apply the last keyword filter...
         namedQueries = namedQueries.filter((query) =>
-          query.name.toLowerCase().includes(k.toLowerCase())
+          query.name.toLowerCase().includes(k.toLowerCase()),
         );
       });
     }
@@ -96,7 +96,7 @@ class ProjectQueriesTable extends React.PureComponent {
           this.props.user,
           nq.query.collectionId,
           (config) => (nq.collectionConfig = config), //assign the config to the named query
-          true
+          true,
         );
       }
     });
@@ -107,7 +107,7 @@ class ProjectQueriesTable extends React.PureComponent {
   viewQuery = (namedQuery) => {
     if (!namedQuery) return;
     const selectedQuery = this.state.queries.filter(
-      (nq) => nq.name === namedQuery.name
+      (nq) => nq.name === namedQuery.name,
     );
     if (selectedQuery.length > 0) {
       FlexRouter.gotoSingleSearch(selectedQuery[0].id);
@@ -125,7 +125,7 @@ class ProjectQueriesTable extends React.PureComponent {
       this.deleteProjectQueries(
         this.props.user.id,
         this.props.project,
-        namedQueries
+        namedQueries,
       );
     }
   };
@@ -144,7 +144,7 @@ class ProjectQueriesTable extends React.PureComponent {
           LocalStorageHandler.updateStoredQueries(project, queriesToDelete); //update the stored queries
           LocalStorageHandler.storeJSONInLocalStorage(
             "stored-active-project",
-            project.toLocalStorageObject()
+            project.toLocalStorageObject(),
           ); //update the stored project
           this.loadTableData(project); //reload the table
           this.props.handleDeleteQueries
@@ -153,7 +153,7 @@ class ProjectQueriesTable extends React.PureComponent {
         } else {
           alert("An error occurred while deleting these queries");
         }
-      }
+      },
     );
   };
 
@@ -170,7 +170,7 @@ class ProjectQueriesTable extends React.PureComponent {
       this.shareProjectQuery(
         this.props.user.id,
         this.props.project,
-        namedQuery
+        namedQuery,
       );
     }
   };
@@ -260,7 +260,7 @@ class ProjectQueriesTable extends React.PureComponent {
                   <a data-tooltip-id={"__qtt__" + namedQuery.id}>
                     <CopyToClipboard
                       textToSave={namedQuery.query.queryDetailsToClipboard(
-                        namedQuery.name
+                        namedQuery.name,
                       )}
                     />
                   </a>
@@ -269,7 +269,7 @@ class ProjectQueriesTable extends React.PureComponent {
                     content={() =>
                       MessageHelper.renderQueryForTooltip(
                         namedQuery.query,
-                        namedQuery.collectionConfig
+                        namedQuery.collectionConfig,
                       )
                     }
                     clickable={true}

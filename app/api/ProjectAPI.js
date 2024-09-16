@@ -21,7 +21,7 @@ export default class ProjectAPI {
             if (store) {
               LocalStorageHandler.storeJSONInLocalStorage(
                 "stored-active-project",
-                project.toLocalStorageObject()
+                project.toLocalStorageObject(),
               );
             }
             callback(project);
@@ -40,7 +40,7 @@ export default class ProjectAPI {
 
   static delete = (userId, projectId, callback) => {
     const storedProject = LocalStorageHandler.getJSONFromLocalStorage(
-      "stored-active-project"
+      "stored-active-project",
     );
     const url =
       _config.PROJECT_API_BASE + "/" + userId + "/projects/" + projectId;
@@ -53,7 +53,7 @@ export default class ProjectAPI {
             //if the active project is deleted make sure to remove it from the local storage
             if (storedProject && projectId === storedProject.id) {
               LocalStorageHandler.removeJSONByKeyInLocalStorage(
-                "stored-active-project"
+                "stored-active-project",
               );
             }
             callback(respData);
@@ -81,7 +81,7 @@ export default class ProjectAPI {
           if (respData && !respData.error && typeof respData === "object") {
             LocalStorageHandler.storeJSONInLocalStorage(
               "stored-project-count",
-              respData.length
+              respData.length,
             );
             callback(respData.map((p) => Project.construct(p)));
           } else {

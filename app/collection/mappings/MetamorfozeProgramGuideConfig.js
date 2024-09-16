@@ -97,7 +97,7 @@ export default class MetamorfozeProgramGuideConfig extends CollectionConfig {
   findMatchingMediaFragments = (
     resource,
     searchTerm,
-    activeMediaObject = null
+    activeMediaObject = null,
   ) => {
     if (!resource.rawData.pages) return null;
     if (!resource.playableContent) return null;
@@ -106,7 +106,7 @@ export default class MetamorfozeProgramGuideConfig extends CollectionConfig {
     try {
       regex = RegexUtil.generateRegexForSearchTerm(searchTerm);
     } catch (err) {
-      console.debug("invalid regex");
+      console.debug("invalid regex", err);
     }
     if (!regex) return null;
 
@@ -144,7 +144,7 @@ export default class MetamorfozeProgramGuideConfig extends CollectionConfig {
 
     const matchingMediaObject = matchingBlock
       ? resource.playableContent.find(
-          (mo) => mo.assetId == matchingBlock.assetId
+          (mo) => mo.assetId == matchingBlock.assetId,
         )
       : null;
     if (!matchingMediaObject) return null;

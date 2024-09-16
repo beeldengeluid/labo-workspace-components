@@ -83,7 +83,7 @@ class Pagination extends React.PureComponent {
     const boundaries = this.getBoundaries(
       this.props.currentPage,
       this.props.pageCount,
-      this.props.maxOffset
+      this.props.maxOffset,
     );
     let prevVisible = false;
 
@@ -99,7 +99,7 @@ class Pagination extends React.PureComponent {
         }
       >
         &lt;
-      </li>
+      </li>,
     );
 
     // Numbers
@@ -117,7 +117,7 @@ class Pagination extends React.PureComponent {
             onClick={this.onClick.bind(this, i)}
           >
             {i + 1}
-          </li>
+          </li>,
         );
       } else {
         if (prevVisible) {
@@ -139,7 +139,7 @@ class Pagination extends React.PureComponent {
         }
       >
         &gt;
-      </li>
+      </li>,
     );
 
     return result;

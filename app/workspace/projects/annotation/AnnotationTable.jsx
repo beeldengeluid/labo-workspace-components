@@ -78,10 +78,10 @@ class AnnotationTable extends React.PureComponent {
             },
             () => {
               this.updateSelection(annotations);
-            }
+            },
           );
         }
-      }
+      },
     );
   }
 
@@ -115,27 +115,29 @@ class AnnotationTable extends React.PureComponent {
         return annotations.sort((a, b) => (a.created < b.created ? 1 : -1));
       case "a-z-label":
         return annotations.sort((a, b) =>
-          safeToLowerCase(a.label) > safeToLowerCase(b.label) ? 1 : -1
+          safeToLowerCase(a.label) > safeToLowerCase(b.label) ? 1 : -1,
         );
       case "z-a-label":
         return annotations.sort((a, b) =>
-          safeToLowerCase(a.label) < safeToLowerCase(b.label) ? 1 : -1
+          safeToLowerCase(a.label) < safeToLowerCase(b.label) ? 1 : -1,
         );
       case "a-z-text":
         return annotations.sort((a, b) =>
-          safeToLowerCase(a.text) > safeToLowerCase(b.text) ? 1 : -1
+          safeToLowerCase(a.text) > safeToLowerCase(b.text) ? 1 : -1,
         );
       case "z-a-text":
         return annotations.sort((a, b) =>
-          safeToLowerCase(a.text) < safeToLowerCase(b.text) ? 1 : -1
+          safeToLowerCase(a.text) < safeToLowerCase(b.text) ? 1 : -1,
         );
       case "vocabulary":
         return annotations.sort((a, b) =>
-          safeToLowerCase(a.vocabulary) > safeToLowerCase(b.vocabulary) ? 1 : -1
+          safeToLowerCase(a.vocabulary) > safeToLowerCase(b.vocabulary)
+            ? 1
+            : -1,
         );
       case "template":
         return annotations.sort((a, b) =>
-          safeToLowerCase(a.template) > safeToLowerCase(b.template) ? 1 : -1
+          safeToLowerCase(a.template) > safeToLowerCase(b.template) ? 1 : -1,
         );
       default:
         return annotations;
@@ -177,7 +179,7 @@ class AnnotationTable extends React.PureComponent {
             type: "select",
             options: createAnnotationClassificationOptionList(
               items,
-              "classifications"
+              "classifications",
             ),
           };
         default:
@@ -190,7 +192,7 @@ class AnnotationTable extends React.PureComponent {
   updateSelection(items) {
     this.setState({
       selection: items.filter((item) =>
-        this.state.selection.some((i) => i.annotationId === item.annotationId)
+        this.state.selection.some((i) => i.annotationId === item.annotationId),
       ),
     });
   }
@@ -204,7 +206,7 @@ class AnnotationTable extends React.PureComponent {
     // check the annotation vocabulary
     if (filter.vocabulary) {
       annotations = annotations.filter(
-        (a) => a.vocabulary === filter.vocabulary
+        (a) => a.vocabulary === filter.vocabulary,
       );
     }
 
@@ -212,8 +214,8 @@ class AnnotationTable extends React.PureComponent {
     if (filter.bookmarkGroup) {
       annotations = annotations.filter((a) =>
         a.bookmarks.some((b) =>
-          b.groups.some((c) => c.annotationId === filter.bookmarkGroup)
-        )
+          b.groups.some((c) => c.annotationId === filter.bookmarkGroup),
+        ),
       );
     }
 
@@ -222,9 +224,9 @@ class AnnotationTable extends React.PureComponent {
       annotations = annotations.filter((a) =>
         a.bookmarks.some((b) =>
           b.classifications.some(
-            (c) => c.annotationId === filter.bookmarkClassification
-          )
-        )
+            (c) => c.annotationId === filter.bookmarkClassification,
+          ),
+        ),
       );
     }
 
@@ -239,7 +241,7 @@ class AnnotationTable extends React.PureComponent {
             Object.keys(annotation).some(
               (key) =>
                 typeof annotation[key] === "string" &&
-                annotation[key].toLowerCase().includes(k)
+                annotation[key].toLowerCase().includes(k),
             ) ||
             // bookmarks
             (annotation.bookmarks &&
@@ -249,23 +251,23 @@ class AnnotationTable extends React.PureComponent {
                   Object.keys(bookmark).some(
                     (key) =>
                       typeof bookmark[key] === "string" &&
-                      bookmark[key].toLowerCase().includes(k)
+                      bookmark[key].toLowerCase().includes(k),
                   ) ||
                   // bookmark-object
                   Object.keys(bookmark.object).some(
                     (key) =>
                       typeof bookmark.object[key] === "string" &&
-                      bookmark.object[key].toLowerCase().includes(k)
+                      bookmark.object[key].toLowerCase().includes(k),
                   ) ||
                   // bookmark-groups
                   bookmark.groups.some((g) =>
-                    g.label.toLowerCase().includes(k)
+                    g.label.toLowerCase().includes(k),
                   ) ||
                   // bookmark-groups
                   bookmark.classifications.some((g) =>
-                    g.label.toLowerCase().includes(k)
-                  )
-              ))
+                    g.label.toLowerCase().includes(k),
+                  ),
+              )),
         );
       });
     }
@@ -307,7 +309,7 @@ class AnnotationTable extends React.PureComponent {
             // update bookmark count in project menu
             this.props.loadBookmarkCount();
           }, 500);
-        }
+        },
       );
     }
   }
@@ -319,7 +321,7 @@ class AnnotationTable extends React.PureComponent {
 
   exportAnnotations(annotations) {
     let data = this.state.annotations.filter((item) =>
-      annotations.includes(item)
+      annotations.includes(item),
     );
 
     // remove cyclic structures
@@ -367,7 +369,7 @@ class AnnotationTable extends React.PureComponent {
       .filter((i) => selectedItems.includes(i)); //copy the array
     selectedItems.forEach((item) => {
       const found = newSelection.find(
-        (selected) => selected.annotationId === item.annotationId
+        (selected) => selected.annotationId === item.annotationId,
       );
       if (!found && e.target.checked) {
         // add it to the selection
@@ -435,8 +437,8 @@ class AnnotationTable extends React.PureComponent {
               renderState.visibleItems.length > 0 &&
               renderState.visibleItems.every((item) =>
                 this.state.selection.some(
-                  (i) => i.annotationId == item.annotationId
-                )
+                  (i) => i.annotationId == item.annotationId,
+                ),
               )
             }
             onChange={this.selectAllChange.bind(this, renderState.visibleItems)}
@@ -461,7 +463,7 @@ class AnnotationTable extends React.PureComponent {
                 onView={this.viewBookmark}
                 selected={
                   this.state.selection.find(
-                    (item) => item.annotationId === annotation.annotationId
+                    (item) => item.annotationId === annotation.annotationId,
                   ) !== undefined
                 }
                 onSelect={this.selectItem}

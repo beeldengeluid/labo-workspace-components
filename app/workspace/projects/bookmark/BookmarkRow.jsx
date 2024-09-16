@@ -28,7 +28,7 @@ class BookmarkRow extends React.PureComponent {
           index: this.props.bookmark.object.dataset,
           startTime,
         },
-        e.shiftKey
+        e.shiftKey,
       );
     }
   };
@@ -145,18 +145,18 @@ class BookmarkRow extends React.PureComponent {
                     onClick={() =>
                       this.openResourceViewer(
                         this,
-                        parseInt(segment.selector.refinedBy.start)
+                        parseInt(segment.selector.refinedBy.start),
                       )
                     }
                     title={"View segment in resource viewer"}
                     className="go-to-segment-link"
                   >
                     {secToTime(
-                      Math.round(segment.selector.refinedBy.start || 0)
+                      Math.round(segment.selector.refinedBy.start || 0),
                     ) +
                       " - " +
                       secToTime(
-                        Math.round(segment.selector.refinedBy.end || 0)
+                        Math.round(segment.selector.refinedBy.end || 0),
                       )}
                   </span>
                 ) : (
@@ -181,13 +181,13 @@ class BookmarkRow extends React.PureComponent {
 
     // filter out CUSTOM annotations
     annotations = annotations.filter(
-      (annotation) => annotation.annotationType !== CUSTOM
+      (annotation) => annotation.annotationType !== CUSTOM,
     );
 
     if (this.props.annotationTypeFilter) {
       // only show annotations of the type specified by the current filter
       annotations = annotations.filter(
-        (a) => a.annotationType === this.props.annotationTypeFilter
+        (a) => a.annotationType === this.props.annotationTypeFilter,
       );
     }
     const hasAnnotations = annotations.length > 0;
@@ -235,7 +235,7 @@ class BookmarkRow extends React.PureComponent {
           false,
           true,
           true,
-          false
+          false,
         )}
         title="Media object(s) not accessible"
       ></span>
@@ -285,7 +285,7 @@ class BookmarkRow extends React.PureComponent {
             true,
             true,
             true,
-            false
+            false,
           )}
           title="Media object(s) can be viewed"
         ></span>

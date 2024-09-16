@@ -80,7 +80,7 @@ export default class AnnotationAPI {
     offset = 0,
     size = 250,
     sort = null,
-    dateRange = null
+    dateRange = null,
   ) => {
     const url = _config.ANNOTATION_API_BASE + "/annotations/filter";
     const params = {
@@ -98,7 +98,7 @@ export default class AnnotationAPI {
         if (xhr.status === 200) {
           const resp = JSON.parse(xhr.responseText);
           callback(
-            Object.prototype.hasOwnProperty.call(resp, "error") ? null : resp
+            Object.prototype.hasOwnProperty.call(resp, "error") ? null : resp,
           );
         } else {
           callback(null);
@@ -169,7 +169,7 @@ export default class AnnotationAPI {
     userId,
     projectId,
     annotationType,
-    callback
+    callback,
   ) => {
     const url =
       _config.ANNOTATION_API_BASE +

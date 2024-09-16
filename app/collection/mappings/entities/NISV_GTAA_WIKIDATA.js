@@ -91,7 +91,7 @@ export default class NISV_GTAA_WIKIDATA {
         //always add in the identifiers to show sources
         const newValue =
           results["identifier"].findIndex(
-            (id) => id["value"] === result["s"]["value"]
+            (id) => id["value"] === result["s"]["value"],
           ) === -1;
         if (newValue) {
           results["identifier"].push({

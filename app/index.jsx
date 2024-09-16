@@ -9,7 +9,7 @@ export function renderWorkspace(
   params,
   user,
   elementId,
-  clientId = null
+  clientId = null,
 ) {
   console.debug("Rendering workspace via labo-workspace-components");
   const component = (
