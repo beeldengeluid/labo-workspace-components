@@ -11,7 +11,7 @@ export default class UserQuery {
     queryType,
     created,
     name,
-    isShared
+    isShared,
   ) {
     this.id = id;
     this.userId = userId;
@@ -58,7 +58,7 @@ export default class UserQuery {
       data.queryType || null,
       data.created || null,
       data.name || null,
-      data.isShared || null
+      data.isShared || null,
     );
   }
 
@@ -72,7 +72,7 @@ export default class UserQuery {
       "layered search",
       null,
       name,
-      false // default is not to shar
+      false, // default is not to shar
     );
   }
   static getPropTypes(isRequired = true) {

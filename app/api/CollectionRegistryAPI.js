@@ -28,7 +28,7 @@ const CollectionRegistryAPI = {
           try {
             resp = JSON.parse(xhr.responseText);
           } catch (e) {
-            console.debug("no valid json");
+            console.debug("no valid json", e);
           }
           if (resp["error"] !== undefined) {
             callback(null);

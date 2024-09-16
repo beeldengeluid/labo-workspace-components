@@ -43,7 +43,7 @@ export default class NIODMediaOorlogConfig extends CollectionConfig {
     resource,
     searchTerm,
     // eslint-disable-next-line no-unused-vars
-    activeMediaObjectIgnored
+    activeMediaObjectIgnored,
   ) => {
     if (!resource.rawData.page) return null;
     if (!resource.playableContent) return null;
@@ -52,13 +52,13 @@ export default class NIODMediaOorlogConfig extends CollectionConfig {
     try {
       regex = RegexUtil.generateRegexForSearchTerm(searchTerm);
     } catch (err) {
-      console.debug("invalid regex");
+      console.debug("invalid regex", err);
     }
 
     const matchingPage = resource.rawData.page;
 
     const matchingMediaObject = resource.playableContent.find(
-      (mo) => mo.assetId === resource.rawData.page.assetId
+      (mo) => mo.assetId === resource.rawData.page.assetId,
     );
     if (!matchingMediaObject) return null;
 
@@ -89,7 +89,7 @@ export default class NIODMediaOorlogConfig extends CollectionConfig {
   getFirstMediaObject = (resource) => {
     let matchingMediaObject = null;
     matchingMediaObject = resource.playableContent.find(
-      (mo) => mo.assetId === resource.rawData.page.assetId
+      (mo) => mo.assetId === resource.rawData.page.assetId,
     );
     return matchingMediaObject;
   };

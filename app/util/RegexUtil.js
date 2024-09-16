@@ -86,6 +86,7 @@ const RegexUtil = {
         ? new RegExp(extractedTerms.join("|"), "gi")
         : null;
     } catch (err) {
+      console.debug(err);
       return null;
     }
   },

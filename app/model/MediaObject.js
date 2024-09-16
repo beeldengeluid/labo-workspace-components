@@ -17,7 +17,7 @@ export default class MediaObject {
     requiresPlayoutAccess,
     cors,
     title,
-    duration = 0
+    duration = 0,
   ) {
     this.assetId = assetId;
 
@@ -69,7 +69,7 @@ export default class MediaObject {
         ? obj.requiresPlayoutAccess
         : collectionConfig.requiresPlayoutAccess(),
       obj.cors,
-      obj.title
+      obj.title,
     );
   };
 

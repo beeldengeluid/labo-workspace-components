@@ -9,7 +9,7 @@ export default class CollectionUtil {
     clientId,
     user,
     collectionId,
-    lookupMapping = true
+    lookupMapping = true,
   ) => {
     let configClass = null;
     if (lookupMapping) {
@@ -40,20 +40,19 @@ export default class CollectionUtil {
     user,
     collectionId,
     callback,
-    lookupMapping = true
+    lookupMapping = true,
   ) => {
     const configClass = CollectionUtil.getCollectionClass(
       clientId,
       user,
       collectionId,
       lookupMapping,
-      user
+      user,
     );
 
     //load the stats & information asynchronously TODO (rewrite to promise is nicer)
-    const collectionMetadata = await CollectionUtil.__loadCollectionMetadata(
-      collectionId
-    );
+    const collectionMetadata =
+      await CollectionUtil.__loadCollectionMetadata(collectionId);
     callback(new configClass(clientId, user, collectionId, collectionMetadata));
   };
 

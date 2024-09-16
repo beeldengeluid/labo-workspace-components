@@ -10,6 +10,6 @@ export const exportDataAsJSON = (data) => {
   // open window and write export contents as json
   const exportWindow = window.open("", windowName, "width=800,height=800");
   exportWindow.document.write(
-    "<pre>" + JSON.stringify(data, null, 4) + "</pre>"
+    "<pre>" + JSON.stringify(data, null, 4) + "</pre>",
   );
 };

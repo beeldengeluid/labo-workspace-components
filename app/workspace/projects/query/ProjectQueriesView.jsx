@@ -61,7 +61,7 @@ const ProjectQueriesView = ({
   const compareQueries = (tableSelection) => {
     LocalStorageHandler.storeQueries(
       project,
-      tableSelection.map((nq) => nq.id)
+      tableSelection.map((nq) => nq.id),
     );
     FlexRouter.gotoQueryComparisonTool();
   };

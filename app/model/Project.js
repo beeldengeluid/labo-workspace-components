@@ -66,7 +66,7 @@ export default class Project {
           collectionConfig: null, // populated in the ProjectQueriesTable (FIXME should be nicer, but ok for now)
         };
       }),
-      data.sessions || []
+      data.sessions || [],
     );
   }
 

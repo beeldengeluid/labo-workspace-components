@@ -75,7 +75,7 @@ export default class NISVProgramGuideBlockConfig extends CollectionConfig {
   findMatchingMediaFragments = (
     resource,
     searchTerm,
-    activeMediaObject = null
+    activeMediaObject = null,
   ) => {
     if (!resource.rawData.pages) return null;
     if (!resource.playableContent) return null;
@@ -84,7 +84,7 @@ export default class NISVProgramGuideBlockConfig extends CollectionConfig {
     try {
       regex = RegexUtil.generateRegexForSearchTerm(searchTerm);
     } catch (err) {
-      console.debug("invalid regex");
+      console.debug("invalid regex", err);
     }
 
     if (!regex) return null;
@@ -98,7 +98,7 @@ export default class NISVProgramGuideBlockConfig extends CollectionConfig {
         (activeMediaObject
           ? page.pageNumber ==
             activeMediaObject.assetId.substring(
-              activeMediaObject.assetId.lastIndexOf("/") + 1
+              activeMediaObject.assetId.lastIndexOf("/") + 1,
             )
           : true)
       );
@@ -120,7 +120,7 @@ export default class NISVProgramGuideBlockConfig extends CollectionConfig {
       ? resource.playableContent.find(
           (mo) =>
             mo.assetId.substring(mo.assetId.lastIndexOf("/") + 1) ==
-            matchingPage.pageNumber
+            matchingPage.pageNumber,
         )
       : null;
     if (!matchingMediaObject) return null;

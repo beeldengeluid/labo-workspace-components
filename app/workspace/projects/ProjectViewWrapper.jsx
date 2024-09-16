@@ -37,10 +37,10 @@ const ProjectViewWrapper = ({
   const [loading, setLoading] = useState(true);
   const [project, setProject] = useState(null);
   const [bookmarkCount, setBookmarkCount] = useState(
-    SessionStorageHandler.get(KEYS.bookmarkCount, 0)
+    SessionStorageHandler.get(KEYS.bookmarkCount, 0),
   );
   const [annotationCount, setAnnotationCount] = useState(
-    SessionStorageHandler.get(KEYS.annotationCount, 0)
+    SessionStorageHandler.get(KEYS.annotationCount, 0),
   );
   const [queriesCount, setQueriesCount] = useState(0);
 

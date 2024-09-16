@@ -51,7 +51,7 @@ const WorkspaceProjectsRecipe = ({ recipe, params, user, clientId }) => {
             <Navigate
               to={SessionStorageHandler.get(
                 WORKSPACE_TAB_ID,
-                WORKSPACE_PROJECT_DETAILS_TAB_ID
+                WORKSPACE_PROJECT_DETAILS_TAB_ID,
               )}
             />
           }

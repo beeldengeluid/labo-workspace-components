@@ -31,7 +31,7 @@ export default class FlexRouter {
     searchTerm,
     popUpName,
     singleResource,
-    onCloseCallback
+    onCloseCallback,
   ) => {
     // create the popup covering most of the current window, centered
     const popup = window.open(
@@ -40,7 +40,7 @@ export default class FlexRouter {
         searchResult,
         searchTerm,
         true,
-        singleResource
+        singleResource,
       ),
       popUpName,
       "width=" +
@@ -50,7 +50,7 @@ export default class FlexRouter {
         ",top=" +
         Math.round(window.screenTop + window.innerHeight * 0.05) +
         ",left=" +
-        Math.round(window.screenLeft + window.innerWidth * 0.05)
+        Math.round(window.screenLeft + window.innerWidth * 0.05),
     );
 
     // Handle close
@@ -72,7 +72,7 @@ export default class FlexRouter {
     searchResult, //NOT a SearchResult.js but {resourceId: 'x', index: 'collectionx', startTime : 1241243}
     searchTerm,
     hidePageHeader = false,
-    singleResource = false
+    singleResource = false,
   ) => {
     if (!searchResult) return false;
     let url =
@@ -91,14 +91,14 @@ export default class FlexRouter {
       if (
         Object.prototype.hasOwnProperty.call(
           searchResult.mediaFragment,
-          "contentId"
+          "contentId",
         )
       )
         url += "&contentId=" + searchResult.mediaFragment.contentId;
       if (
         Object.prototype.hasOwnProperty.call(
           searchResult.mediaFragment,
-          "start"
+          "start",
         )
       )
         url += "&s=" + searchResult.mediaFragment.start;
@@ -117,7 +117,7 @@ export default class FlexRouter {
       if (
         Object.prototype.hasOwnProperty.call(
           searchResult.mediaFragment,
-          "layer"
+          "layer",
         )
       )
         url += "&l=" + searchResult.mediaFragment.layer;

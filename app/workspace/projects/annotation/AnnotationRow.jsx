@@ -188,7 +188,7 @@ class AnnotationRow extends React.PureComponent {
       <div
         className={classNames(
           IDUtil.cssClassName("annotation-row"),
-          "item-row"
+          "item-row",
         )}
       >
         <div className="item">

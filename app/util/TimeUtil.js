@@ -37,14 +37,16 @@ const TimeUtil = {
       typeof formattedDates[0] === "string"
     ) {
       return TimeUtil.extractDate(
-        formattedDates[0].split("-").map((it) => it.trim())[0]
+        formattedDates[0].split("-").map((it) => it.trim())[0],
       ).getTime();
     }
     return formattedDates
       ? Math.min(
           ...formattedDates.map((fd) =>
-            TimeUtil.extractDate(fd) ? TimeUtil.extractDate(fd).getTime() : null
-          )
+            TimeUtil.extractDate(fd)
+              ? TimeUtil.extractDate(fd).getTime()
+              : null,
+          ),
         )
       : null;
   },
@@ -52,7 +54,7 @@ const TimeUtil = {
   sortedFormattedDates(formattedDates) {
     return formattedDates
       ? formattedDates.sort((a, b) =>
-          TimeUtil.extractDate(a) > TimeUtil.extractDate(b) ? 1 : -1
+          TimeUtil.extractDate(a) > TimeUtil.extractDate(b) ? 1 : -1,
         )
       : null;
   },

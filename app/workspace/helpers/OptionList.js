@@ -70,7 +70,7 @@ export const createAnnotationClassificationOptionList = (items, key) => {
   return items
     .reduce(
       (a, b) => a.concat(createClassificationOptionList(b.bookmarks, key)),
-      []
+      [],
     )
     .filter((o) => {
       if (!(o.value in hits)) {

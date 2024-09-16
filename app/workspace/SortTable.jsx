@@ -127,12 +127,12 @@ class SortTable extends React.PureComponent {
     const currentIndex = currentPage * this.props.perPage;
     const itemsOnPage = this.state.items.slice(
       currentIndex,
-      currentIndex + this.props.perPage
+      currentIndex + this.props.perPage,
     );
 
     //populate the header using the provided header function
     const header = this.props.head.map((head, index) =>
-      this.getHeader(index, head.field, head.content, head.sortable)
+      this.getHeader(index, head.field, head.content, head.sortable),
     );
 
     //populate the table body using the provided row function

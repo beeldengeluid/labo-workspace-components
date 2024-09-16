@@ -47,6 +47,7 @@ export default class LocalStorageHandler {
     try {
       return "localStorage" in window && window["localStorage"] !== null;
     } catch (e) {
+      console.debug(e);
       return false;
     }
   };
@@ -156,7 +157,7 @@ export default class LocalStorageHandler {
 
   static getStoredQueries = () => {
     return LocalStorageHandler.getJSONFromLocalStorage(
-      "stored-query-selection"
+      "stored-query-selection",
     );
   };
 

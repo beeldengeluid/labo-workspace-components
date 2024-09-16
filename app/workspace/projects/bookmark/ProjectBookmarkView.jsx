@@ -52,7 +52,7 @@ const ProjectBookmarkView = ({
 }) => {
   const [annotations, setAnnotations] = useState([]); // eslint-disable-line no-unused-vars
   const [view, setView] = useState(
-    SessionStorageHandler.get(KEYS.view, "bookmark-centric")
+    SessionStorageHandler.get(KEYS.view, "bookmark-centric"),
   );
 
   // React hook

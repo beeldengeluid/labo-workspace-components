@@ -50,7 +50,7 @@ const ProjectDetailsView = ({
     // store tab to sessionStorage
     SessionStorageHandler.set(
       WORKSPACE_TAB_ID,
-      WORKSPACE_PROJECT_DETAILS_TAB_ID
+      WORKSPACE_PROJECT_DETAILS_TAB_ID,
     );
 
     return () => console.log("End of ProjectBookmarkView lifecycle");

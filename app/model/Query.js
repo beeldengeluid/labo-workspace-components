@@ -28,7 +28,7 @@ export default class Query {
     innerHitsOffset = 0,
     innerHitsSize = 5,
     highlightFields = null,
-    storeAfterExecution = true
+    storeAfterExecution = true,
   ) {
     this.id = id;
     this.searchId = searchId;
@@ -109,7 +109,7 @@ export default class Query {
       obj.highlightFields ||
         (collectionConfig ? collectionConfig.getHighlightFields() : null),
 
-      storeAfterExecution //whether to store the query results right after execution (in local storage)
+      storeAfterExecution, //whether to store the query results right after execution (in local storage)
     );
   }
 
@@ -138,15 +138,14 @@ export default class Query {
     //just set it manually (maybe this is being too nice)
     if (!foundLayer) {
       searchLayers = {};
-      searchLayers[
-        config ? config.getCollectionId() : query.collectionId
-      ] = true;
+      searchLayers[config ? config.getCollectionId() : query.collectionId] =
+        true;
     }
     return searchLayers;
   }
 
   static getInitialDesiredFacets(query, config) {
-    let df = config ? config.getFacets() : null || [];
+    const df = (config ? config.getFacets() : null) || [];
     if (query.dateRange && query.dateRange.field) {
       df.push({
         field: query.dateRange.field,

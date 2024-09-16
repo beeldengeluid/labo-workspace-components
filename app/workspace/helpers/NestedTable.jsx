@@ -28,7 +28,7 @@ class NestedTable extends React.PureComponent {
     // filter
     const filtered = this.props.filterItems(
       this.props.items,
-      this.state.filter
+      this.state.filter,
     );
 
     // sort
@@ -195,9 +195,9 @@ NestedTable.propTypes = {
           value: PropTypes.string,
           disable: PropTypes.bool,
           name: PropTypes.string,
-        })
+        }),
       ),
-    })
+    }),
   ),
   items: PropTypes.array.isRequired,
   onExport: PropTypes.func.isRequired,

@@ -162,7 +162,7 @@ export default class CollectionConfig {
       return indices.concat(
         stats["collection_annotation_indices"].map((i) => {
           return i.collection;
-        })
+        }),
       );
     }
     return indices;
@@ -236,7 +236,7 @@ export default class CollectionConfig {
   //checks if the field is a keyword field and makes sure to return the matched keyword field name
   getMatchedKeywordField(fieldName) {
     const kwMatch = this.getKeywordFields().find(
-      (kw) => kw.indexOf(fieldName) !== -1
+      (kw) => kw.indexOf(fieldName) !== -1,
     );
     if (kwMatch) {
       return fieldName === kwMatch ? fieldName : fieldName + ".keyword";
@@ -377,7 +377,7 @@ export default class CollectionConfig {
   getFacets() {
     return ElasticsearchDataUtil.extractFacetsFromStats(
       this.dateFields,
-      this.stringFields
+      this.stringFields,
     );
   }
 
@@ -662,7 +662,7 @@ export default class CollectionConfig {
   findMatchingMediaFragments = (
     resource,
     searchTerm,
-    activeMediaObject = null // eslint-disable-line no-unused-vars
+    activeMediaObject = null, // eslint-disable-line no-unused-vars
   ) => {
     return null;
   };

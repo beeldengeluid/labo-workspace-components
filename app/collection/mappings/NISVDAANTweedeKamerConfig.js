@@ -239,7 +239,7 @@ export default class NISVDAANTweedeKamerConfig extends CollectionConfig {
   findMatchingMediaFragments = (
     resource,
     searchTerm,
-    activeMediaObject = null
+    activeMediaObject = null,
   ) => {
     if (!resource.transcripts) return null;
 
@@ -249,7 +249,7 @@ export default class NISVDAANTweedeKamerConfig extends CollectionConfig {
     try {
       regex = RegexUtil.generateRegexForSearchTerm(searchTerm);
     } catch (err) {
-      console.debug("invalid regex");
+      console.debug("invalid regex", err);
     }
     if (!regex) {
       return null;
@@ -278,7 +278,7 @@ export default class NISVDAANTweedeKamerConfig extends CollectionConfig {
 
     return firstMatch
       ? resource.playableContent.find(
-          (mo) => mo.assetId === firstMatch.mediaObjectId
+          (mo) => mo.assetId === firstMatch.mediaObjectId,
         )
       : null;
   };
