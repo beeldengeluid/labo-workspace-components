@@ -1,0 +1,108 @@
+{
+    "@context": [
+        "https://doi.org/10.5063/schema/codemeta-2.0",
+        "http://schema.org",
+        "https://w3id.org/software-types"
+    ],
+    "@type": "SoftwareSourceCode",
+    "identifier": "labo-workspace-components",
+    "name": "Labo Workspace Components",
+    "version": "2.0.1",
+    "description": "The Labo Workspace Components handle the dynamic front-end for the Clariah Media Suite related to a user's personal workspace, such as bookmarking",
+    "license": "https://spdx.org/licenses/MIT.html",
+    "url": "https://mediasuite.clariah.nl/",
+    "producer": [
+        {
+            "@id": "https://www.beeldengeluid.nl/",
+            "@type": "Organization",
+            "name": "Netherlands Institute for Sound and Vision",
+            "url": "https://www.beeldengeluid.nl/",
+            "location": {
+                "@type": "Place",
+                "name": "Hilversum"
+            }
+        }
+    ],
+    "author": [
+        {
+            "@id": "https://github.com/jblom",
+            "@type": "Person",
+            "givenName": "Jaap",
+            "familyName": "Blom",
+            "affiliation": {
+                "@id": "https://www.beeldengeluid.nl/"
+            }
+        }
+    ],
+    "sourceOrganization": {
+        "@id": "https://www.beeldengeluid.nl/"
+    },
+    "programmingLanguage": {
+        "@type": "ComputerLanguage",
+        "identifier": "javascript",
+        "name": "javascript"
+    },
+    "operatingSystem": "Linux",
+    "codeRepository": "https://github.com/beeldengeluid/clariah-mediasuite",
+    "softwareRequirements": [
+        {
+            "@type": "SoftwareLibrary",
+            "identifier": "react",
+            "name": "react",
+            "version": "18.x"
+        },
+        {
+            "@type": "SoftwareLibrary",
+            "identifier": "npm",
+            "name": "npm",
+            "version": "19.x"
+        }
+    ],
+    "funding": [
+        {
+            "@type": "Grant",
+            "name": "CLARIAH-CORE (NWO grant 184.033.101)",
+            "url": "https://www.clariah.nl",
+            "funder": {
+                "@type": "Organization",
+                "name": "NWO",
+                "url": "https://www.nwo.nl"
+            }
+        },
+        {
+            "@type": "Grant",
+            "name": "CLARIAH-PLUS (NWO grant 184.034.023)",
+            "funder": {
+                "@type": "Organization",
+                "name": "NWO",
+                "url": "https://www.nwo.nl"
+            }
+        }
+    ],
+    "readme": "https://github.com/CLARIAH/labo-workspace-components/blob/main/README.md",
+    "issueTracker": "https://github.com/beeldengeluid/labo-workspace-components/issues",
+    "releaseNotes": "https://mediasuite.clariah.nl/documentation/release-notes",
+    "developmentStatus": [
+        "https://www.repostatus.org/#active",
+        "https://w3id.org/research-technology-readiness-levels#Level9Proven"
+    ],
+    "keywords": [
+        "front-end",
+        "workspace",
+        "bookmarks"
+    ],
+    "targetProduct": [
+        {
+            "@type": "WebApplication",
+            "name": "CLARIAH Media Suite",
+            "url": "https://mediasuite.clariah.nl",
+            "provider": {
+                "@type": "Organization",
+                "name": "Netherlands Institute for Sound and Vision",
+                "url": "https://beeldengeluid.nl"
+            }
+        }
+    ],
+    "dateCreated": "2023-11-21",
+    "dateModified": "2023-11-21"
+}
