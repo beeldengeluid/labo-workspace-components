@@ -33,4 +33,4 @@ jobs:
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: publish package
-        run: pnpm publish
+        run: pnpm publish --tag latest --filter bootstrap-vue-3 --access=public
