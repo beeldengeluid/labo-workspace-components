@@ -18,7 +18,6 @@ jobs:
         uses: pnpm/action-setup@v4
         with:
           version: 9
-          registry-url: https://npm.pkg.github.com/
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@master
         with:
@@ -29,8 +28,8 @@ jobs:
         run: cat ./package.json
       - run: pnpm install --frozen-lockfile
       - name: set pnpm config with auth
-        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
+        run: pnpm config set '//npm.pkg.github.com:_authToken' "${NODE_AUTH_TOKEN}"
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: publish package
-        run: pnpm publish --tag latest --filter bootstrap-vue-3 --access=public
+        run: pnpm publish
