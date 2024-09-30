@@ -8,9 +8,10 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - uses: actions/setup-node@v2
+      - name: setup pnmp
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 19
-      - run: npm ci
-      - run: npm run prettier
-      - run: npm run lint
+          version: 9
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm prettier
+      - run: pnpm lint
