@@ -14,10 +14,10 @@ jobs:
           ref: ${{ github.ref }}
       - name: cat package.json
         run: cat ./package.json
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
+      - name: setup pnmp
+        uses: pnpm/action-setup@v4
         with:
-          node-version: 22
+          version: 9
           registry-url: https://npm.pkg.github.com/
       - name: Automated Version Bump
         uses: phips28/gh-action-bump-version@master
@@ -27,7 +27,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
       - name: cat package.json
         run: cat ./package.json
-      - run: npm ci
-      - run: npm publish
+      - run: pnpm install --frozen-lockfile
+      - run: pnpm publish
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
