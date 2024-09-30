@@ -28,6 +28,9 @@ jobs:
       - name: cat package.json
         run: cat ./package.json
       - run: pnpm install --frozen-lockfile
-      - run: pnpm publish
+      - name: set pnpm config with auth
+        run: pnpm config set '//registry.npmjs.org/:_authToken' "${NODE_AUTH_TOKEN}"
         env:
-          NPM_TOKEN: ${{secrets.GITHUB_TOKEN}}
+          NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
+      - name: publish package
+        run: pnpm publish
