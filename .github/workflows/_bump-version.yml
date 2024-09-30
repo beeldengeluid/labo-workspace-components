@@ -28,7 +28,9 @@ jobs:
         run: cat ./package.json
       - run: pnpm install --frozen-lockfile
       - name: set pnpm config with auth
-        run: pnpm config set '//npm.pkg.github.com:_authToken' "${NODE_AUTH_TOKEN}"
+        run: |
+          pnpm config set '@beeldengeluid:registry=https://npm.pkg.github.com'
+          pnpm config set '//npm.pkg.github.com:_authToken' "${NODE_AUTH_TOKEN}"
         env:
           NODE_AUTH_TOKEN: ${{secrets.GITHUB_TOKEN}}
       - name: publish package
