@@ -18,6 +18,9 @@ import ProjectEditView from "./workspace/projects/crud/ProjectEditView";
 import ProjectQueriesView from "./workspace/projects/query/ProjectQueriesView";
 import "./WorkspaceProjectsRecipe.scss";
 
+//export view
+import ProjectExportView from "./workspace/projects/crud/ProjectExportView"; 
+
 const WORKSPACE_TAB_ID = "bg__project-tab";
 const WORKSPACE_PROJECT_DETAILS_TAB_ID = "details";
 
@@ -60,6 +63,10 @@ const WorkspaceProjectsRecipe = ({ recipe, params, user, clientId }) => {
         <Route
           path="/workspace/projects/:projectId/bookmarks"
           element={getRouteElement(ProjectBookmarkView)}
+        />
+        <Route
+          path="/workspace/projects/:projectId/export"
+          element={getRouteElement(ProjectExportView)}
         />
         <Route
           path="/workspace/projects/:projectId/annotations"
