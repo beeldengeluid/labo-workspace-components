@@ -284,7 +284,6 @@ class ProjectTable extends React.PureComponent {
             <Link
               onClick={() => this.setActiveProject(project)}
               to={"/workspace/projects/" + project.id + "/export"}
-              className="btn"
             >Export</Link></li>
               </ul>
             </div>

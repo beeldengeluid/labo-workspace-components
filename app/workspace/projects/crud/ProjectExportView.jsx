@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import IDUtil from "../../../util/IDUtil";
@@ -21,6 +21,13 @@ const ProjectExportView = ({ recipe, params, user, clientId }) => {
 
   const [exportType, setExportType] = useState('projectMetadata')
   const [project, setProject] = useState(null);
+
+  const nameExportRef = useRef(null);
+  const namePersonRef = useRef(null);
+  const emailRef = useRef(null);
+  const affiliationRef = useRef(null);
+  const collaborativeOrganisationRef = useRef(null);
+  const descRef = useRef(null);
 
   // React hooks
   useEffect(() => {
@@ -46,10 +53,17 @@ const ProjectExportView = ({ recipe, params, user, clientId }) => {
     });
   };
 
-  const handleSubmit = (e, proj) => {
+  const handleProjectMetadataSubmit = (e, proj) => {
     e.preventDefault();
 
     exportDataAsJSON(proj)
+
+    return false;
+  };
+
+  const handleCorpusSubmit = (e, proj) => {
+    e.preventDefault();
+    alert("Need to implement sending \"" + nameExportRef.current?.value + "\" to the Set API and email data provider")
 
     return false;
   };
@@ -75,6 +89,8 @@ const ProjectExportView = ({ recipe, params, user, clientId }) => {
   } else if (project) {
     contents = (
       <div>
+      <h2>Export User Project "{project.name}"</h2>
+      <p>On this page you can export the metadata describing "{project.name}" or request to send your corpus, consisting of the metadata of the items in your bookmark groups and queries, to the SANE environment for analysis</p>
           <table>
             <tbody>
               <tr>
@@ -87,17 +103,91 @@ const ProjectExportView = ({ recipe, params, user, clientId }) => {
           </table>
         {exportType === 'projectMetadata' ? 
           <div>
-          <form
-          className={IDUtil.cssClassName("project-form")}
-          onSubmit={(e) => handleSubmit(e, project)}>
-            <div className="actions">
-          {cancelButton}
-          <input type="submit" className="btn primary add" value={submitButton} />
-        </div>
-      </form>
+            <form
+            className={IDUtil.cssClassName("project-form")}
+            onSubmit={(e) => handleProjectMetadataSubmit(e, project)}>
+              <div className="actions">
+                {cancelButton}
+                <input type="submit" className="btn primary add" value={submitButton} />
+              </div>
+            </form>
           </div> : 
-          <div>Add form here
-            </div>}
+          <div>
+            <form
+            className={IDUtil.cssClassName("project-form")}
+            onSubmit={(e) => handleCorpusSubmit(e, project)}>
+                <div className="new-project-container">
+                  <span className="bg__new-project-wrapper">
+                    <label className="label project-modal-left">Name of export</label>
+                    <input
+                      type="text"
+                      name="nameExport"
+                      required={true}
+                      className="project-modal-right"
+                      placeholder="Name of export"
+                      ref={nameExportRef}
+                    />
+                  </span>
+                  <span className="bg__new-project-wrapper">
+                    <label className="label project-modal-left">Name of person requesting data export</label>
+                    <input
+                      type="text"
+                      name="namePerson"
+                      required={true}
+                      className="project-modal-right"
+                      placeholder="Your name"
+                      ref={namePersonRef}
+                    />
+                  </span>
+                  <span className="bg__new-project-wrapper">
+                    <label className="label project-modal-left">Email address</label>
+                    <input
+                      type="text"
+                      name="email"
+                      required={true}
+                      className="project-modal-right"
+                      placeholder="Your email address"
+                      ref={emailRef}
+                    />
+                  </span>
+                  <span className="bg__new-project-wrapper">
+                    <label className="label project-modal-left">Affiliation</label>
+                    <input
+                      type="text"
+                      name="affiliation"
+                      required={true}
+                      className="project-modal-right"
+                      placeholder="Your affiliation"
+                      ref={affiliationRef}
+                    />
+                  </span>
+                  <span className="bg__new-project-wrapper">
+                    <label className="label project-modal-left">SANE collaborative organisation</label>
+                    <input
+                      type="text"
+                      name="affiliation"
+                      className="project-modal-right"
+                      placeholder="ID of your SANE collaborative organisation (if you have this)"
+                      ref={collaborativeOrganisationRef}
+                    />
+                  </span>
+                  <span className="bg__new-project-wrapper">
+                    <label className="label project-modal-left">Description of project/plans</label>
+                    <textarea
+                      name="description"
+                      required={true}
+                      className="project-modal-right"
+                      placeholder="A description of your project, in particular what analysis you plan to do and what results you want"
+                      ref={descRef}
+                    />
+                  </span>
+              </div>
+              <div className="actions">
+                {cancelButton}
+                <input type="submit" className="btn primary add" value={submitButton} />
+              </div>
+            </form>
+          </div>}
         </div>
   )
   } else {
