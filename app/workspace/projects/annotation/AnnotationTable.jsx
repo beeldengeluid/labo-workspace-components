@@ -298,6 +298,7 @@ class AnnotationTable extends React.PureComponent {
 
       //now delete all the annotations with a single call to the annotation API
       AnnotationAPI.deleteUserAnnotations(
+        this.props.project.id,
         this.props.user.id,
         deletionList,
         (success) => {
