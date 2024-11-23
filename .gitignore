@@ -8,3 +8,4 @@ stats.json
 __snapshots__
 .vscode
 NOTES.md
+.pnpm-store
