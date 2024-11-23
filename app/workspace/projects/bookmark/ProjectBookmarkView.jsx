@@ -58,8 +58,10 @@ const ProjectBookmarkView = ({
   // React hook
   useEffect(() => {
     // instead of breaking out of the container, change the background color to a white and grey region
-    document.body.style.background =
-      "linear-gradient(180deg, white, white 343px, #faf6f6 343px, #faf6f6)";
+    document.body.parentElement.style.minHeight = "100vh";
+    document.body.style.backgroundColor = "#faf6f6";
+    document.body.style.backgroundImage =
+      "linear-gradient(180deg, white, white 385px, transparent 385px, transparent)";
     // store tab to sessionStorage
     SessionStorageHandler.set(WORKSPACE_TAB_ID, WORKSPACE_BOOKMARKS_TAB_ID);
 

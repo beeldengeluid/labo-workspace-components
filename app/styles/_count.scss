@@ -2,7 +2,6 @@
 .count{
     display: inline-block;
     font-family: $fontHeading;
-    float: right;
     margin-left: 15px;
     background-color: $clSecondary;
     color: $clWhite;
@@ -13,5 +12,4 @@
     line-height: 13px;
     min-width: 18px;
     text-align: center;
-    margin-top: 1px;
 }

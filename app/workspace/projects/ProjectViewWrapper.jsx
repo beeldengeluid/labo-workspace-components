@@ -47,9 +47,7 @@ const ProjectViewWrapper = ({
   // React hook
   useEffect(() => {
     loadProject(user.id, projectId);
-
-    return () => console.log("End of ProjectViewWrapper lifecycle");
-  }, [projectId]);
+  }, [projectId, user.id]);
 
   // load project based user.id and the url param :projectId
   const loadProject = (userId, projId) => {
@@ -64,7 +62,6 @@ const ProjectViewWrapper = ({
         setLoading(false);
         setProject(p);
         setQueriesCount(p.queries.length);
-
         loadBookmarkCount(userId, p);
       } else {
         setLoading(false);
@@ -76,7 +73,12 @@ const ProjectViewWrapper = ({
     if (!proj) {
       proj = project;
     }
+    if (!userId) {
+      userId = user.id;
+    }
+    console.log("load bookmark count");
     AnnotationAPI.getAnnotationCounts(userId, proj.id, (counts) => {
+      console.log(counts);
       if (counts) {
         SessionStorageHandler.set(KEYS.bookmarkCount, counts.bookmarkCount);
         SessionStorageHandler.set(KEYS.annotationCount, counts.annotationCount);
@@ -135,7 +137,7 @@ const ProjectViewWrapper = ({
                 "/bookmarks"
               }
             >
-              Bookmarks<span className="count">{bookmarkCount}</span>
+              Bookmarks<span className="count">{bookmarkCount || 0}</span>
             </a>
             <a
               className={isTabActive("annotations") ? "active" : null}
@@ -145,7 +147,7 @@ const ProjectViewWrapper = ({
                 "/annotations"
               }
             >
-              Annotations<span className="count">{annotationCount}</span>
+              Annotations<span className="count">{annotationCount || 0}</span>
             </a>
             <a
               className={isTabActive("queries") ? "active" : null}

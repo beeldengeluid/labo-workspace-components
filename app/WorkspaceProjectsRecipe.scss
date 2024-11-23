@@ -37,6 +37,7 @@ body{
 
   p{
     line-height: 1.5em;
+    margin:0;
   }
 
   /**
@@ -213,4 +214,8 @@ body{
 
 .interactive {
 	cursor:pointer;
+}
+
+*{
+  box-sizing: border-box;
 }

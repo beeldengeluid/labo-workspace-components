@@ -313,9 +313,13 @@ class BookmarkRow extends React.PureComponent {
             title={"Resource ID: " + bookmark.resourceId}
             onClick={this.openResourceViewer}
             style={{
-              backgroundImage: "url(" + bookmark.object.placeholderImage + ")",
+              backgroundImage: bookmark.object.placeholderImage
+                ? "url(" + bookmark.object.placeholderImage + ")"
+                : undefined,
             }}
-          />
+          >
+            {!bookmark.object.placeholderImage && mediaIcon}
+          </div>
 
           <ul className="info">
             <li className="primary content-title">
@@ -323,8 +327,6 @@ class BookmarkRow extends React.PureComponent {
               <p
                 onClick={this.openResourceViewer}
                 title={"Resource ID: " + bookmark.resourceId}
-                //style={{"color": "red"}}
-                className="testhaha"
               >
                 {bookmark.object.error
                   ? "error: source catalogue not available"
@@ -381,7 +383,7 @@ class BookmarkRow extends React.PureComponent {
             <div className="sublevel-button-container">
               <div
                 title="Fragments"
-                className={classNames("sublevel-button", {
+                className={classNames("sublevel-button facet", {
                   active: this.props.showSubSegment,
                   zero: !hasSegments,
                   lowered: this.props.showSubMediaObject,
@@ -394,7 +396,7 @@ class BookmarkRow extends React.PureComponent {
 
               <div
                 title="MediaObject annotations"
-                className={classNames("sublevel-button facet", {
+                className={classNames("sublevel-button", {
                   active: this.props.showSubMediaObject,
                   zero: !hasAnnotations,
                   lowered: this.props.showSubSegment,

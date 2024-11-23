@@ -12,9 +12,12 @@
 
   table{
     .description{
+      p{
+        margin:0;
+      }
       a{
         text-decoration: none;
-        color: black;
+        color: mix($clDark, $clDarkGrey);
       }
       max-width: 270px;
       white-space: normal;
