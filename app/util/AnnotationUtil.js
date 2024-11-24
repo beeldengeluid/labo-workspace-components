@@ -1,3 +1,4 @@
+import React from "react";
 import AnnotationAPI from "../api/AnnotationAPI";
 
 const AnnotationUtil = {
@@ -74,7 +75,7 @@ const AnnotationUtil = {
       project: projectId,
     };
 
-    AnnotationAPI.getFilteredAnnotations(user.id, filter, null, callback);
+    AnnotationAPI.getFilteredAnnotations(userId, filter, null, callback);
   },
 
   loadAnnotationsForTargetId(userId, projectId, target, callback) {

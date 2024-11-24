@@ -8,7 +8,7 @@ export const AnnotationTranslator = (annotation) => {
       if (annotation.role == "reflection") {
         return "reflection";
       }
-    default:
-      return annotation.annotationType;
+      break;
   }
+  return annotation.annotationType;
 };

@@ -8,7 +8,7 @@ const ReflectionUtil = {
       project: projectId,
     };
 
-    AnnotationAPI.getFilteredAnnotations(user.id, filter, null, callback);
+    AnnotationAPI.getFilteredAnnotations(userId, filter, null, callback);
   },
 
   loadReflectionForTargetId(
