@@ -1,26 +1,51 @@
-.bg__project-details-view{
+@import "../../../styles/variables";
 
-  h2{
-    margin: 40px 0;
+.bg__project-details-view {
+  h2 {
+    margin: 40px 0 20px 20px;
   }
 
-  .btn{
+  .btn {
     float: right;
     margin-top: -60px;
   }
 
-  ul.details{
+  .additional {
+    margin-bottom: 30px;
+    margin-left: 20px;
+  }
+
+  ul.details {
     margin-top: 20px;
     margin-bottom: 20px;
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
+    column-gap: 40px;
+    padding-left: 20px;
 
-    li{
+    li {
       padding-right: 10px;
       padding-bottom: 10px;
       min-width: 150px;
       max-width: 600px;
     }
+  }
+
+  .subjects {
+    display: flex;
+    flex-wrap: wrap;
+    column-gap: 5px;
+    row-gap: 5px;
+    .subject {
+      display: inline-block;
+      padding: 4px 8px;
+      border-radius: 3px;
+      background-color: $clGrey;
+    }
+  }
+
+  .reflection{
+    color: $clReflection;
   }
 }
