@@ -94,7 +94,7 @@ export const createAnnotationOptionList = (items) => {
         hits[a.annotationType] = true;
         list.push({
           value: a.annotationType,
-          name: "⊆ " + AnnotationTranslator(a.annotationType),
+          name: "⊆ " + AnnotationTranslator(a),
         });
       }
     });

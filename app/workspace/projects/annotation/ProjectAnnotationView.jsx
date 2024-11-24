@@ -28,6 +28,8 @@ const getCurrentView = () => {
       return "link-centric";
     case "#metadata-centric":
       return "metadata-centric";
+    case "#custom-centric":
+      return "custom-centric";
     default:
       // get view from session storage (bookmark-centric OR annotation-centric)
       return SessionStorageHandler.get(KEYS.view, "classification-centric");
@@ -157,6 +159,19 @@ const ProjectAnnotationView = ({
         />
       );
       break;
+
+    case "custom-centric":
+      viewComponent = (
+        <AnnotationTable
+          {...defaultProps}
+          key="custom"
+          type="custom"
+          title="Custom"
+          filters={["search", "classification", "bookmarkGroup"]}
+          sort={["created", "a-z-text", "z-a-text"]}
+        />
+      );
+      break;
   }
 
   return (
@@ -208,6 +223,16 @@ const ProjectAnnotationView = ({
             />
 
             <label htmlFor="view-metadata">Metadata cards</label>
+
+            <input
+              type="radio"
+              name="view"
+              value="custom-centric"
+              id="view-custom"
+              checked={view === "custom-centric"}
+              onChange={changeView}
+            />
+            <label htmlFor="view-custom">Custom</label>
           </div>
         </div>
       </div>

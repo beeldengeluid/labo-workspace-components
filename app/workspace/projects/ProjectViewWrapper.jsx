@@ -3,6 +3,7 @@ import PropTypes from "prop-types";
 import { useParams, useLocation } from "react-router-dom";
 
 import SessionStorageHandler from "../../util/SessionStorageHandler";
+import ReflectionUtil from "../../util/ReflectionUtil";
 import ProjectAPI from "../../api/ProjectAPI";
 import AnnotationAPI from "../../api/AnnotationAPI";
 

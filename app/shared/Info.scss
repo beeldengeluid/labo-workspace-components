@@ -1,0 +1,55 @@
+@import "../styles/variables";
+
+
+.bg__info {
+  display: inline-block;
+  color: $clInfoDefault;
+  padding-left: 7px;
+  font-weight: normal !important;
+  transition: color $transition;
+
+  &:hover {
+      color: mix($clMediumGrey, $clDark, 50%);
+  }
+
+  > .fas {
+      font-size: 14px;
+  }
+
+  &.primary {
+      color: $clPrimary;
+      &:hover {
+          color: rgba($clPrimary, 0.8);
+      }
+  }
+
+  &.secondary {
+      color: $clSecondary;
+      &:hover {
+          color: rgba($clSecondary, 0.8);
+      }
+  }
+  &.black {
+      color: $clDark;
+      &:hover {
+          color: rgba($clDark, 0.8);
+      }
+  }
+
+  &.grey {
+      color: $clDarkGrey;
+  }
+  &.white {
+      color: white;
+  }
+
+  &.reflection {
+      color: $clReflection;
+  }
+
+  // if placed left of a title, change padding
+  &.left {
+      padding-left: 0;
+      padding-right: 7px;
+  }
+}

@@ -598,7 +598,7 @@ class BookmarkTable extends React.PureComponent {
                 toggleSubMediaObject={this.toggleSubMediaObject}
                 toggleSubSegment={this.toggleSubSegment}
                 annotationTypeFilter={annotationTypeFilter}
-                projectId={this.props.project.id}
+                project={this.props.project}
               />
             ))
           ) : (

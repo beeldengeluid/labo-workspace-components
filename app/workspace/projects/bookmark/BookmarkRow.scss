@@ -98,6 +98,14 @@
 
           td{
             vertical-align: top;
+
+            &.custom{
+              white-space: normal;
+              text-overflow:inherit;
+              overflow: visible;
+              line-height: 1.4em;
+            }
+            
             &.time{
               font-weight: bold;
               .go-to-segment-link {
@@ -108,6 +116,7 @@
 
               }
             }
+
             table{
               tr{
                 &:first-child{
@@ -115,6 +124,8 @@
                   border: 0;
                 }
               }
+
+              
             }
           }
         }

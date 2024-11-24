@@ -2,20 +2,68 @@ import React from "react";
 import IDUtil from "../../../util/IDUtil";
 import IconUtil from "../../../util/IconUtil";
 import AnnotationUtil from "../../../util/AnnotationUtil";
+import ReflectionUtil from "../../../util/ReflectionUtil";
 import { secToTime } from "../../helpers/time";
+import Info from "../../../shared/Info";
+import Project from "../../../model/Project";
 import { AnnotationTranslator } from "../../helpers/AnnotationTranslator";
 import classNames from "classnames";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import "./BookmarkRow.scss";
 
-const CUSTOM = "custom"; // removed AnnotationConstants (still in labo-components)
+const CUSTOM = "custom";
+const REFLECTION = "reflection";
 /**
  * A row with bookmark information, and actions, and sub level annotations
  */
 class BookmarkRow extends React.PureComponent {
   constructor(props) {
     super(props);
+
+    this.state = { resourceReflection: [], mediaObjectReflection: [] };
+  }
+
+  componentDidMount() {
+    if (this.props.project.reflection?.enabled) {
+      this.loadReflectionAnnotations();
+    }
+  }
+
+  loadReflectionAnnotations() {
+    // Load resource reflections
+    ReflectionUtil.loadReflectionForTargetId(
+      this.props.project.user,
+      this.props.project.id,
+      this.props.bookmark.resourceId,
+      undefined,
+      this.props.project.reflection?.questions.resource ||
+        "Resource reflection",
+      "Resource",
+      (resourceReflection) => {
+        this.setState({
+          resourceReflection,
+        });
+      },
+    );
+
+    // Load mediaObject reflections
+    if (this.props.bookmark.selector.value.length >= 3) {
+      ReflectionUtil.loadReflectionForTargetId(
+        this.props.project.user,
+        this.props.project.id,
+        this.props.bookmark.selector.value[2].id,
+        undefined,
+        this.props.project.reflection?.questions.mediaObject ||
+          "MediaObject reflection",
+        "MediaObject",
+        (mediaObjectReflection) => {
+          this.setState({
+            mediaObjectReflection,
+          });
+        },
+      );
+    }
   }
 
   onDelete = () => this.props.onDelete([this.props.bookmark.resourceId]);
@@ -45,7 +93,13 @@ class BookmarkRow extends React.PureComponent {
   toggleSubSegment = (e) =>
     this.props.toggleSubSegment(this.props.bookmark.resourceId);
 
-  renderSubMediaObject(bookmark, annotations, showHeader) {
+  renderSubMediaObject(
+    bookmark,
+    annotations,
+    showHeader,
+    defaultReflectionQuestion,
+    defaultReflectionLevel,
+  ) {
     // sort annotations by type
     annotations.sort((a, b) => (a.annotationType > b.annotationType ? 1 : -1));
 
@@ -64,22 +118,41 @@ class BookmarkRow extends React.PureComponent {
         ) : null}
         <tbody>
           {annotations.map((annotation, i) => {
+            const isReflection =
+              annotation.annotationType == CUSTOM &&
+              annotation.role == REFLECTION;
+            const info = isReflection ? (
+              <Info
+                icon="fas fa-eye"
+                id="reflection-question-resource"
+                className="reflection"
+                text={annotation.question || defaultReflectionQuestion}
+              />
+            ) : null;
             return (
               <tr key={"a__" + i}>
                 <td className="type bold">
                   <Link
                     to={
                       "/workspace/projects/" +
-                      this.props.projectId +
+                      this.props.project.id +
                       "/annotations#" +
                       annotation.annotationType +
                       "-centric"
                     }
                   >
-                    {AnnotationTranslator(annotation.annotationType)}
+                    {AnnotationTranslator(annotation)}
+                    {isReflection &&
+                      ` (${annotation.level || defaultReflectionLevel})`}
+
+                    {info}
                   </Link>
                 </td>
-                <td className="content">
+                <td
+                  className={classNames("content", {
+                    custom: annotation.annotationType == CUSTOM,
+                  })}
+                >
                   {AnnotationUtil.annotationBodyToPrettyText(annotation)}
                 </td>
                 <td className="details">
@@ -93,7 +166,7 @@ class BookmarkRow extends React.PureComponent {
                     <a
                       rel="noopener noreferrer"
                       target="_blank"
-                      href={"https:" + annotation.url}
+                      href={annotation.url}
                     >
                       {annotation.url
                         ? annotation.url.replace(/^\/\//i, "")
@@ -102,6 +175,10 @@ class BookmarkRow extends React.PureComponent {
                   ) : null}
                   {annotation.annotationTemplate
                     ? "Template: " + annotation.annotationTemplate
+                    : null}
+                  {annotation.annotationType === CUSTOM &&
+                  annotation.role == REFLECTION
+                    ? annotation.created
                     : null}
                 </td>
               </tr>
@@ -164,7 +241,13 @@ class BookmarkRow extends React.PureComponent {
                 )}
               </td>
               <td>
-                {this.renderSubMediaObject(segment, segment.annotations, false)}
+                {this.renderSubMediaObject(
+                  segment,
+                  segment.annotations,
+                  false,
+                  this.props.project.reflection?.questions.segment,
+                  "Segment",
+                )}
               </td>
             </tr>
           ))}
@@ -184,6 +267,13 @@ class BookmarkRow extends React.PureComponent {
       (annotation) => annotation.annotationType !== CUSTOM,
     );
 
+    // add enriched reflection annotations
+    annotations = annotations.concat(
+      this.state.resourceReflection,
+      this.state.mediaObjectReflection,
+    );
+
+    // Filter
     if (this.props.annotationTypeFilter) {
       // only show annotations of the type specified by the current filter
       annotations = annotations.filter(
@@ -204,7 +294,13 @@ class BookmarkRow extends React.PureComponent {
       case this.props.showSubMediaObject:
         foldableBlock = (
           <div className="sublevel">
-            {this.renderSubMediaObject(bookmark, annotations, true)}
+            {this.renderSubMediaObject(
+              bookmark,
+              annotations,
+              true,
+              this.props.project.reflection?.questions.resource,
+              "",
+            )}
           </div>
         );
         break;
@@ -416,7 +512,7 @@ class BookmarkRow extends React.PureComponent {
 }
 
 BookmarkRow.propTypes = {
-  projectId: PropTypes.string.isRequired,
+  project: Project.getPropTypes(),
   bookmark: PropTypes.object.isRequired,
   toggleSub: PropTypes.func,
   showSub: PropTypes.bool,
