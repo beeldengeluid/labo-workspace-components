@@ -132,21 +132,27 @@ class BookmarkRow extends React.PureComponent {
             return (
               <tr key={"a__" + i}>
                 <td className="type bold">
-                  <Link
-                    to={
-                      "/workspace/projects/" +
-                      this.props.project.id +
-                      "/annotations#" +
-                      annotation.annotationType +
-                      "-centric"
-                    }
-                  >
-                    {AnnotationTranslator(annotation)}
-                    {isReflection &&
-                      ` (${annotation.level || defaultReflectionLevel})`}
+                  {isReflection ? (
+                    <>
+                      {AnnotationTranslator(annotation)}
+                      {isReflection &&
+                        ` (${annotation.level || defaultReflectionLevel})`}
 
-                    {info}
-                  </Link>
+                      {info}
+                    </>
+                  ) : (
+                    <Link
+                      to={
+                        "/workspace/projects/" +
+                        this.props.project.id +
+                        "/annotations#" +
+                        annotation.annotationType +
+                        "-centric"
+                      }
+                    >
+                      {AnnotationTranslator(annotation)}
+                    </Link>
+                  )}
                 </td>
                 <td
                   className={classNames("content", {
