@@ -76,9 +76,7 @@ const ProjectViewWrapper = ({
     if (!userId) {
       userId = user.id;
     }
-    console.log("load bookmark count");
     AnnotationAPI.getAnnotationCounts(userId, proj.id, (counts) => {
-      console.log(counts);
       if (counts) {
         SessionStorageHandler.set(KEYS.bookmarkCount, counts.bookmarkCount);
         SessionStorageHandler.set(KEYS.annotationCount, counts.annotationCount);
