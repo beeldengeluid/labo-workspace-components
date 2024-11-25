@@ -48,21 +48,38 @@ class BookmarkRow extends React.PureComponent {
     );
 
     // Load mediaObject reflections
-    if (this.props.bookmark.selector.value.length >= 3) {
-      ReflectionUtil.loadReflectionForTargetId(
-        this.props.project.user,
-        this.props.project.id,
-        this.props.bookmark.selector.value[2].id,
-        undefined,
-        this.props.project.reflection?.questions.mediaObject ||
-          "MediaObject reflection",
-        "MediaObject",
-        (mediaObjectReflection) => {
-          this.setState({
-            mediaObjectReflection,
-          });
-        },
-      );
+    const mediaObjectIds = Array.from(
+      new Set(
+        this.props.bookmark.targetObjects
+          .map((target) => target.assetId)
+          .filter((assetId) => assetId !== this.props.bookmark.resourceId),
+      ),
+    );
+    if (mediaObjectIds.length) {
+      let calls = mediaObjectIds.length;
+      const mediaObjectReflection = [];
+      mediaObjectIds.forEach((mediaObjectId) => {
+        ReflectionUtil.loadReflectionForTargetId(
+          this.props.project.user,
+          this.props.project.id,
+          mediaObjectId,
+          undefined,
+          this.props.project.reflection?.questions.mediaObject ||
+            "MediaObject reflection",
+          "MediaObject",
+          (reflections) => {
+            calls--;
+            mediaObjectReflection.push(...reflections);
+
+            // All calls finished, update the state
+            if (calls == 0) {
+              this.setState({
+                mediaObjectReflection,
+              });
+            }
+          },
+        );
+      });
     }
   }
 
