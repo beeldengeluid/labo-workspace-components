@@ -5,6 +5,7 @@ import SessionStorageHandler from "../../../util/SessionStorageHandler";
 import ProjectViewWrapper from "../ProjectViewWrapper";
 import { Link } from "react-router-dom";
 import "./ProjectDetailsView.scss";
+import { transform } from "lodash";
 /**
  * Show the details of the given project.
  */
@@ -56,6 +57,9 @@ const ProjectDetailsView = ({
     return () => console.log("End of ProjectBookmarkView lifecycle");
   }, []);
 
+  const hasAdditionalFields =
+    project.author || project.research || project.reflection;
+
   // rendering everything
   return (
     <div className={IDUtil.cssClassName("project-details-view")}>
@@ -80,6 +84,104 @@ const ProjectDetailsView = ({
           <p>{project.created.substring(0, 10)}</p>
         </li>
       </ul>
+      {hasAdditionalFields && (
+        <>
+          <hr />
+          <h2>Additional fields</h2>
+          <div className="additional">
+            <p>
+              These additional fields can be edited using the project edit
+              dialog in the research tools.
+            </p>
+          </div>
+          {!!project.author && (
+            <ul className="details">
+              <li>
+                <h5 className="label">Author</h5>
+                <p>{project.author?.background}</p>
+              </li>
+            </ul>
+          )}
+
+          {!!project.research && (
+            <>
+              <ul className="details">
+                <li>
+                  <h5 className="label">Research context</h5>
+                  <p>{project.research.context}</p>
+                </li>
+                <li>
+                  <h5 className="label">Research question</h5>
+                  <p>{project.research.question}</p>
+                </li>
+              </ul>
+              <ul className="details">
+                <li>
+                  <h5 className="label">Subjects</h5>
+                  <div className="subjects">
+                    {project.research.subjects.map((subject) => (
+                      <div
+                        key={subject.id}
+                        className="subject"
+                        title={`${subject.vocabulary}: ${subject.id}`}
+                      >
+                        {subject.label}
+                      </div>
+                    ))}
+                  </div>
+                </li>
+                <li>
+                  <h5 className="label">Links</h5>
+                  {project.research.links.map((link) => (
+                    <a
+                      key={link}
+                      className="link"
+                      href={link}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                    >
+                      {link}
+                    </a>
+                  ))}
+                </li>
+              </ul>
+            </>
+          )}
+
+          {!!project.reflection && (
+            <>
+              <ul className="details">
+                <li>
+                  <h5 className="label reflection">Reflection enabled</h5>
+                  <p>{project.reflection.enabled ? "Yes" : "No"}</p>
+                </li>
+              </ul>
+              {!!project.reflection.enabled && (
+                <ul className="details">
+                  <li>
+                    <h5 className="label reflection">Reflection questions</h5>
+                    {Object.entries(project.reflection.questions).map(
+                      ([key, question]) => (
+                        <div key={key}>
+                          <p>
+                            <u style={{ textTransform: "capitalize" }}>
+                              {key}:
+                            </u>
+                          </p>
+                          <p>
+                            <i>{question}</i>
+                          </p>
+                        </div>
+                      ),
+                    )}
+                  </li>
+                </ul>
+              )}
+            </>
+          )}
+          <hr />
+        </>
+      )}
     </div>
   );
 };

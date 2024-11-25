@@ -229,12 +229,14 @@ class BookmarkTable extends React.PureComponent {
               )) ||
             // annotations
             (bookmark.annotations &&
-              bookmark.annotations.some((annotation) =>
-                Object.keys(annotation).some(
-                  (key) =>
-                    typeof annotation[key] === "string" &&
-                    annotation[key].toLowerCase().includes(k),
-                ),
+              bookmark.annotations.some(
+                (annotation) =>
+                  annotation.annotationType !== CUSTOM &&
+                  Object.keys(annotation).some(
+                    (key) =>
+                      typeof annotation[key] === "string" &&
+                      annotation[key].toLowerCase().includes(k),
+                  ),
               )),
         );
       });

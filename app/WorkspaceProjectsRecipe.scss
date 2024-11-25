@@ -181,6 +181,17 @@ body{
     }
   }
 
+  select{
+    border: 1px solid $clGreyTint;
+    border-left-width: 2px;
+    padding: 5px 10px;
+    border-radius: 3px;
+    font-family: $fontBody;
+
+    &:focus{
+      border-left: 2px solid $clPrimary;
+    }
+  }
 
   input, textarea, select{
     outline-color: $clPrimary;
