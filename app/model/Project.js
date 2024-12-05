@@ -2,14 +2,26 @@ import PropTypes from "prop-types";
 import Query from "./Query";
 
 export default class Project {
-  constructor(id, name, description, user, created, queries, sessions) {
+  constructor(
+    id,
+    name,
+    description,
+    user,
+    created,
+    queries,
+    author,
+    research,
+    reflection,
+  ) {
     this.id = id;
     this.name = name;
     this.description = description;
     this.user = user;
     this.created = created;
     this.queries = queries; // array containing named queries
-    this.sessions = sessions; // Note: no longer supported!
+    this.author = author;
+    this.research = research;
+    this.reflection = reflection;
   }
 
   //this is the object being sent via the ProjectAPI (it filters out the collectionConfig and the queries)
@@ -22,7 +34,9 @@ export default class Project {
       queries: this.queries.map((nq) => {
         return { name: nq.name, query: nq.query };
       }),
-      sessions: this.sessions,
+      author: this.author,
+      research: this.research,
+      reflection: this.reflection,
     };
     if (this.id) {
       //only add the ID when it's there, so the API will use the correct request method
@@ -40,7 +54,9 @@ export default class Project {
       queries: this.queries.map((nq) => {
         return { name: nq.name, id: nq.id, query: nq.query };
       }),
-      sessions: this.sessions,
+      author: this.author,
+      research: this.research,
+      reflection: this.reflection,
     };
     if (this.id) {
       //only add the ID when it's there, so the API will use the correct request method
@@ -66,7 +82,9 @@ export default class Project {
           collectionConfig: null, // populated in the ProjectQueriesTable (FIXME should be nicer, but ok for now)
         };
       }),
-      data.sessions || [],
+      data.author || null,
+      data.research || null,
+      data.reflection || null,
     );
   }
 
@@ -78,8 +96,38 @@ export default class Project {
       user: PropTypes.string,
       created: PropTypes.string,
       queries: PropTypes.array,
-      sessions: PropTypes.array,
+      author: AuthorPropTypes,
+      research: ResearchPropTypes,
+      reflection: ReflectionPropTypes,
     });
     return isRequired ? projectShape.isRequired : projectShape;
   }
 }
+
+export const AuthorPropTypes = PropTypes.shape({
+  background: PropTypes.string.isRequired,
+});
+
+export const ReflectionPropTypes = PropTypes.shape({
+  enabled: PropTypes.bool.isRequired,
+  questions: PropTypes.shape({
+    bookmarkGroup: PropTypes.string.isRequired,
+    resource: PropTypes.string.isRequired,
+    mediaObject: PropTypes.string.isRequired,
+    segmentLayer: PropTypes.string.isRequired,
+    segment: PropTypes.string.isRequired,
+  }).isRequired,
+});
+
+export const SubjectPropTypes = PropTypes.shape({
+  id: PropTypes.string.isRequired,
+  label: PropTypes.string.isRequired,
+  vocabulary: PropTypes.string.isRequired,
+});
+
+export const ResearchPropTypes = PropTypes.shape({
+  context: PropTypes.string.isRequired,
+  question: PropTypes.string.isRequired,
+  subjects: PropTypes.arrayOf(SubjectPropTypes).isRequired,
+  links: PropTypes.arrayOf(PropTypes.string).isRequired,
+});

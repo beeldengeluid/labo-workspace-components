@@ -87,7 +87,9 @@
       .selector{
         flex-shrink: 0;
         flex-basis: 30px;
+
         input{
+          margin-top: 6px;
           margin-left: 10px;
         }
 
@@ -159,29 +161,29 @@
           margin-right: 0px;
         }
 
-        // .row-menu{
-        //   margin-top: 7px;
-        // }
         .sublevel-button-container{
           position: absolute;
           right: 0;
           bottom: 0;
           line-height: 13px;
+          display: flex;
+          align-items:center;
 
           .sublevel-button{
-            display: inline-block;
-            float:right;
+            display: flex;
+            align-items:center;
             background-color: $clGreyTint;
             color: $clDark;
             text-transform: uppercase;
             font-family: $fontHeading;
-            padding: 0px 30px 0px 10px;
+            padding: 0px 30px 0px 5px;
             background-position: center right 10px;
             background-repeat: no-repeat;
             background-image: $arrowDownDarkUrl;
             cursor: pointer;
             box-sizing: border-box;
             transition: background-color 0.2s ease-out;
+            border:none;
 
             &.lowered{
               background-color: darken($clGreyTint, 10);
@@ -210,18 +212,11 @@
             &.facet:before{
               content: " ";
               position:absolute;
-              left: -32px;
+              left: -30px;
               top: 0px;
-              border-top: 16px solid transparent;
-              border-left: 16px solid transparent;
-              border-right: 16px solid $clGreyTint;
-              border-bottom: 16px solid $clGreyTint;
-              /*
-              border-top: 19px solid transparent;
-              border-left: 15px solid transparent;
-              border-right: 15px solid $clGreyTint;
-              border-bottom: 15px solid $clGreyTint;
-              */
+              border: 15.5px solid transparent;
+              border-right-color: $clGreyTint;
+              border-bottom-color: $clGreyTint;
               transition: border-color 0.2s ease-out;
             }
 
@@ -246,8 +241,7 @@
             @import '../../styles/_count.scss';
 
             .count{
-              margin-left: 8px;
-              margin-top: 6px;
+              margin-left: 5px;
             }
 
             &.zero {

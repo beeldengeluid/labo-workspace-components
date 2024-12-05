@@ -40,6 +40,7 @@ $clLightBlue: #9fbdd7;
 $clPrimary: $clBlue;
 $clPrimaryAlt: $clLightBlue;
 $clSecondary: $clOrange;
+$clInfoDefault: mix($clMediumGrey, $clDark, 70%);
 
 /* Font */
 
@@ -59,3 +60,6 @@ $break-small: 940px;
 $maxPageWidth: 1200px;
 $maxTextBodyWidth: 800px;
 $contentPadding: 40px;
+
+/* Reflection */
+$clReflection: #9b51e0;

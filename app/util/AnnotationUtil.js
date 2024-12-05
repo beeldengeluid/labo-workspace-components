@@ -1,3 +1,6 @@
+import React from "react";
+import AnnotationAPI from "../api/AnnotationAPI";
+
 const AnnotationUtil = {
   generateResourceLevelTarget(collectionId, resourceId) {
     return {
@@ -22,11 +25,28 @@ const AnnotationUtil = {
   },
 
   annotationBodyToPrettyText(body) {
+    // Comment
     if (body.annotationType === "comment") {
       return body.text ? body.text.substring(0, 200) : "";
-    } else if (body.annotationType === "classification") {
+    }
+    // Comment
+    if (body.annotationType === "link") {
+      return (
+        <a
+          rel="noopener noreferrer"
+          href={body.url ? body.url.replace(/^\/\//i, "") : ""}
+          target="_blank"
+        >
+          {body.label || ""}
+        </a>
+      );
+    }
+    // Classification
+    else if (body.annotationType === "classification") {
       return body.label;
-    } else if (body.annotationType === "metadata") {
+    }
+    // Metadata
+    else if (body.annotationType === "metadata") {
       if (body.properties && body.properties.length > 0) {
         let text = body.properties[0].key;
         text +=
@@ -38,7 +58,38 @@ const AnnotationUtil = {
         return text;
       }
     }
+    // Custom
+    else if (body.annotationType == "custom") {
+      // Reflection
+      if (body.role == "reflection") {
+        return <i>{body.text}</i>;
+      }
+    }
     return "-";
+  },
+
+  loadBookmarkGroups(userId, projectId, callback) {
+    const filter = {
+      "user.keyword": userId,
+      motivation: "bookmarking",
+      project: projectId,
+    };
+
+    AnnotationAPI.getFilteredAnnotations(userId, filter, null, callback);
+  },
+
+  loadAnnotationsForTargetId(userId, projectId, target, callback) {
+    const filter = {
+      // "user.keyword": userId,
+      project: projectId,
+      "target.source": target,
+    };
+
+    const notFilter = {
+      motivation: "bookmarking",
+    };
+
+    AnnotationAPI.getFilteredAnnotations(userId, filter, notFilter, callback);
   },
 };
 

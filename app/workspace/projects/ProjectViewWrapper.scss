@@ -26,8 +26,9 @@
       display: inline-block;
       border-bottom: 3px solid white;
       margin-right: 1px;
-      &:hover{
-        background-color: $clGrey;
+      height: 40px;
+
+      &:hover{        background-color: $clGrey;
         border-bottom-color: $clDarkGrey;
         text-decoration: none;
       }
@@ -40,6 +41,4 @@
       @import '../../styles/count';
     }
   }
-
-
 }

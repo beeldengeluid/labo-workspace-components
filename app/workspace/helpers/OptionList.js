@@ -92,9 +92,10 @@ export const createAnnotationOptionList = (items) => {
     i.annotations.forEach((a) => {
       if (!(a.annotationType in hits)) {
         hits[a.annotationType] = true;
+        if (a.annotationType == "custom") return;
         list.push({
           value: a.annotationType,
-          name: "⊆ " + AnnotationTranslator(a.annotationType),
+          name: "⊆ " + AnnotationTranslator(a),
         });
       }
     });
