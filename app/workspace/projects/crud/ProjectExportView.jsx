@@ -3,6 +3,7 @@ import { Link, useParams, useNavigate, useLocation } from "react-router-dom";
 import PropTypes from "prop-types";
 import IDUtil from "../../../util/IDUtil";
 import ProjectAPI from "../../../api/ProjectAPI";
+import SetAPI from "../../../api/SetAPI";
 import { setBreadCrumbsFromMatch } from "../../helpers/BreadCrumbs";
 import { exportDataAsJSON } from "../../helpers/Export";
 import ProjectForm from "./ProjectForm";
@@ -63,7 +64,7 @@ const ProjectExportView = ({ recipe, params, user, clientId }) => {
 
   const handleCorpusSubmit = (e, proj) => {
     e.preventDefault();
-    alert("Need to implement sending \"" + nameExportRef.current?.value + "\" to the Set API and email data provider")
+    SetAPI.request_access("dummy ID", (respData) => {alert(respData)});
 
     return false;
   };
