@@ -19,7 +19,7 @@ import ProjectQueriesView from "./workspace/projects/query/ProjectQueriesView";
 import "./WorkspaceProjectsRecipe.scss";
 
 //export view
-import ProjectExportView from "./workspace/projects/crud/ProjectExportView"; 
+import ProjectExportView from "./workspace/projects/crud/ProjectExportView";
 
 const WORKSPACE_TAB_ID = "bg__project-tab";
 const WORKSPACE_PROJECT_DETAILS_TAB_ID = "details";

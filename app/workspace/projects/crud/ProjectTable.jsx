@@ -26,9 +26,7 @@ class ProjectTable extends React.PureComponent {
       { field: "", content: "", sortable: false },
     ];
 
-    this.bulkActions = [
-      { title: "Delete", onApply: this.deleteProjects }
-    ];
+    this.bulkActions = [{ title: "Delete", onApply: this.deleteProjects }];
 
     this.defaultSort = {
       field: "name",
@@ -281,10 +279,13 @@ class ProjectTable extends React.PureComponent {
                   Delete
                 </li>
                 <li>
-            <Link
-              onClick={() => this.setActiveProject(project)}
-              to={"/workspace/projects/" + project.id + "/export"}
-            >Export</Link></li>
+                  <Link
+                    onClick={() => this.setActiveProject(project)}
+                    to={"/workspace/projects/" + project.id + "/export"}
+                  >
+                    Export
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
