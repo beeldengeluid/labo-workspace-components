@@ -11,7 +11,7 @@ import ProjectForm from "./ProjectForm";
 // eslint-disable-next-line no-unused-vars
 const ProjectExportView = ({ recipe, params, user, clientId }) => {
 
-  const cancelLink="/workspace/projects";
+  const backToProjectsLink="/workspace/projects";
   const submitButton="Export";
   const { projectId } = useParams();
   // for being able to redirect the user
@@ -62,17 +62,30 @@ const ProjectExportView = ({ recipe, params, user, clientId }) => {
     return false;
   };
 
-  const handleCorpusSubmit = (e, proj) => {
-    e.preventDefault();
-    SetAPI.request_access("dummy ID", (respData) => {alert(respData)});
+  const handleCorpusSubmit = (e) => {
+  // TODO: change the interface so that export is a set, and put the set ID in here
+  // TODO: work out where to store request text
+    let set_id = "dummy_id";
+    let request_body = {
+      "request_text": "A user has requested access to the set " + set_id + " via the Media Suite",
+      "request_details":{
+        "Set name": nameExportRef.current?.value,
+        "Requester": namePersonRef.current?.value,
+        "Email": emailRef.current?.value,
+        "Affiliation": affiliationRef.current?.value,
+        "Collaborative Organisation": collaborativeOrganisationRef.current?.value,
+        "Description": descRef.current?.value
+      }
+    };
+    SetAPI.request_access(set_id, request_body, (respData) => {alert("Sent request for access"); window.location=backToProjectsLink});
 
     return false;
   };
 
   let cancelButton = null;
-  if (cancelLink && cancelLink !== "") {
+  if (backToProjectsLink && backToProjectsLink !== "") {
     cancelButton = (
-      <Link to={cancelLink} className="btn">
+      <Link to={backToProjectsLink} className="btn">
         Cancel
       </Link>
     );
@@ -116,7 +129,7 @@ const ProjectExportView = ({ recipe, params, user, clientId }) => {
           <div>
             <form
             className={IDUtil.cssClassName("project-form")}
-            onSubmit={(e) => handleCorpusSubmit(e, project)}>
+            onSubmit={(e) => handleCorpusSubmit(e)}>
                 <div className="new-project-container">
                   <span className="bg__new-project-wrapper">
                     <label className="label project-modal-left">Name of export</label>
