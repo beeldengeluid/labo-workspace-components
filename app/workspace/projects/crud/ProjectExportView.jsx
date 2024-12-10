@@ -81,7 +81,7 @@ const ProjectExportView = ({ recipe, params, user, clientId }) => {
       },
     };
     e.preventDefault();
-    
+
     SetAPI.request_access(set_id, request_body, (respData) => {
       alert("Sent request for access");
       window.location = backToProjectsLink;
