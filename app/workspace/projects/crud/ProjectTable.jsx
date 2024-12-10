@@ -7,7 +7,6 @@ import IDUtil from "../../../util/IDUtil";
 import trunc from "../../../util/Trunc";
 import ProjectUtil from "../../../util/ProjectUtil";
 import LocalStorageHandler from "../../../util/LocalStorageHandler";
-import { exportDataAsJSON } from "../../helpers/Export";
 import SortTable from "../../SortTable";
 import "./ProjectTable.scss";
 
@@ -27,10 +26,7 @@ class ProjectTable extends React.PureComponent {
       { field: "", content: "", sortable: false },
     ];
 
-    this.bulkActions = [
-      { title: "Delete", onApply: this.deleteProjects },
-      { title: "Export", onApply: exportDataAsJSON },
-    ];
+    this.bulkActions = [{ title: "Delete", onApply: this.deleteProjects }];
 
     this.defaultSort = {
       field: "name",
@@ -282,7 +278,14 @@ class ProjectTable extends React.PureComponent {
                 >
                   Delete
                 </li>
-                <li onClick={() => exportDataAsJSON(project)}>Export</li>
+                <li>
+                  <Link
+                    onClick={() => this.setActiveProject(project)}
+                    to={"/workspace/projects/" + project.id + "/export"}
+                  >
+                    Export
+                  </Link>
+                </li>
               </ul>
             </div>
           </div>
